@@ -20,9 +20,31 @@
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br>
+    <%= f.label "Password confirmation:" %><br>
     <%= f.password_field :password_confirmation %>
   </div>
+  <div class="field">
+    <%= f.label "First Name:" %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label "Last Name:"  %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label "City: " %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label "Postal Code:"  %><br>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class="field">
+    <%= f.label "Biography : (You can fill me in later) " %><br>
+    <%= f.text_field :bio %>
+  </div> 
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
