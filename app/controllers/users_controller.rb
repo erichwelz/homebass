@@ -21,6 +21,7 @@ def index
 
     respond_to do |format|
       if @user.save
+        auto_login(@user)
         format.html { redirect_to(:users, notice: 'User was successfully created.') }
         format.json { render action: 'show', status: :created, location: @user }
       else
