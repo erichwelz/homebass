@@ -11,6 +11,11 @@ def index
 end
 
   def show
+    @user = User.find(params[:id])
+
+    if current_user
+      @reference = @user.references.build
+    end
   end
 
   def new
@@ -62,6 +67,6 @@ end
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :city, :postal_code, :bio, :instrument_list, :genre_list)
+      params.require(:user).permit(:comment, :email, :password, :password_confirmation, :first_name, :last_name, :city, :postal_code, :bio, :instrument_list, :genre_list)
     end
 end

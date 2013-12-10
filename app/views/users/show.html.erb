@@ -10,5 +10,51 @@
   <li>bio: <%= @user.bio %></li>
 </ul>
 
+<% if current_user %>
+	
+	<h3>References</h3>
+
+	<p>References for <%= @user.first_name %></p>
+
+	<% @user.references.each do |reference| %>
+		<p>
+			<%= reference.comment %>
+			<hr>
+			<% if reference.user != nil %>
+			<em>by <%= reference.user.full_name %></em>
+			 Reference Created on: <%= reference.created_at %>
+			<% end %>
+		</p>
+	<% end %>
+
+	<h4>Add a Reference for <%= @user.first_name %>!</h4>
+
+	<%= form_for([@user, @reference]) do |f| %>
+		<% if @reference.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@reference.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+				<ul>
+					<% @reference.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div class="field">
+			<%= f.label :comment %><hr />
+			<%= f.text_area :comment %>
+		</div>		
+		<div class="actions">
+			<%= f.submit %>
+		</div>
+		</div>
+	<% end %>
+<% else %>
+	<p>Please <%= link_to 'log in', new_session_path %> to leave a reference.</p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
