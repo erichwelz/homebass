@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
+
   authenticates_with_sorcery!
 
   acts_as_taggable
-
+  acts_as_taggable_on :genres, :instruments
 
   validates :password, length: { minimum: 3 }
   validates :password, confirmation: true
@@ -17,6 +18,5 @@ class User < ActiveRecord::Base
   def full_name
     full_name = first_name.capitalize + " " + last_name.capitalize 
   end 
-
 
 end

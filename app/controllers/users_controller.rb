@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 def index
+  if params[:tag]
+    @users = User.tagged_with(params[:tag])
+  else
     @users = User.all
   end
+end
 
   def show
   end
@@ -58,6 +62,6 @@ def index
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :city, :postal_code, :bio)
+      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :city, :postal_code, :bio, :instrument_list, :genre_list)
     end
 end

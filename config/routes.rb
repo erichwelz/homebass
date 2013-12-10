@@ -3,6 +3,8 @@ Musicianfinder::Application.routes.draw do
   resources :user_sessions
   resources :users
 
+  get 'tags/:tag', to: 'users#index', as: :tag
+
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 

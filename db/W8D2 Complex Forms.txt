@@ -1,0 +1,81 @@
+W8D2 Complex Forms
+Instructor: Julie
+
+At this point in the program you've probably already had to deal with those pesky nested forms for your nested resources! Today, we'll cover some tips and tricks and some new gems that will help us make building forms a walk in the park. We'll cover in detail Rails form helpers for nested_forms, allowing a model to "accepts_nested_attributes" and alternative approaches, such as creating ActiveModel objects to represent our forms. We will also cover the cocoon gem and look over some other tools to help build forms more quickly and conveniently.
+-----------------------------------------
+Writing from today will be found in bitmaker's github sample crowdfunder
+
+
+MANUAL WAY: INCOMPLETE
+- Nested form ex. 1
+project.rb
++ belongs_to: owner, class_name: 'User'
+
+_form.html
+
++ <ul id="tiers">
+ <% f.fields_for :tiers do |tiers_form| %>
+  <li>
+  <%=tiers_form.label :pricing %>
+  <%=tiers_form.text_field :pricing %>
+
+  <%=tiers_form.label :description %>
+  <%=tiers_form.text_area :description %>
+
+  <%=tiers_form.label :quantity %>
+  <%=tiers_form.text_field :quantity %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Add a new tier', #, class: 'add-tier' %>
+<%= link_to 'Remove tier', #, class: 'remove-tier' %>
+
+projects_controller.rb
++ def new
+  @new = Project.new  
+  3.times do
+  @project.tiers_build
+  end
+
+project_parms
+ + :tiers_attributes: [:id, :pricing, :quantity])
+
++projects.js
+$(document).ready(function(){
+  $('.add-tier').click(function(event) {
+  event.preventDefault();
+  var tierId = newDate().getTime();
+  var html = <giant para, see github>
+  $('#tiers').append(html);
+  });
+
+});
+
+  $('.remove-tier).on('click', (function(event){
+
+  $('this').parent().remove();
+  })
+ And more..
+
+OR - GEM COCOON:
+
+following github cocoon docs - all examples are in haml
+
+add gem 'cocoon' > bundle
+
+**must name with a particular convention**
+- difficult to make gem do anything out of expected scope
+- if naming conventions aren't followed, one can pass variant in via params
+
+- No javascript required
+
+Up online version will have fixed js
+
+
+-----------------------------------------
+Additional Reading
+Rails Guides: Form Helpers, Dealing with Model Objects: http://guides.rubyonrails.org/form_helpers.html#dealing-with-model-objects
+Cocoon Gem: https://github.com/nathanvda/cocoon
+Pivotal Labs: Form-backing Objects for Fun and Profit http://pivotallabs.com/form-backing-objects-for-fun-and-profit/
+Active Model Form Objects: http://robots.thoughtbot.com/activemodel-form-objects

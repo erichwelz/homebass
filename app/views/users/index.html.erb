@@ -8,8 +8,12 @@
     <li>city: <%= user.city %></li>
     <li>postal_code: <%= user.postal_code %></li>
     <li>bio: <%= truncate(user.bio, length: 100) %></li>
-    <li>Genres: <%= user.tag_list %></li>
+    <li>Genres: <%= user.genre_list %></li>
+    <li>Instruments: <%= user.instrument_list %></li>
   </ul>
+
+<p>Genres: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+<p>Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
 
 <% end %>
 
