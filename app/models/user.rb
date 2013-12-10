@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 
-  has_many :references
+  has_many :target_references, class_name: "Reference", foreign_key: :target_id
+  has_many :source_references, class_name: "Reference", foreign_key: :source_id
+   
+ 
   authenticates_with_sorcery!
 
   acts_as_taggable

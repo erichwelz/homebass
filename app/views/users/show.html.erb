@@ -20,8 +20,8 @@
 		<p>
 			<%= reference.comment %>
 			<hr>
-			<% if reference.user != nil %>
-			<em>by <%= reference.user.full_name %></em>
+			<% if reference.source != nil %>
+			<em>by <%= reference.source.full_name %></em>
 			 Reference Created on: <%= reference.created_at %>
 			<% end %>
 		</p>

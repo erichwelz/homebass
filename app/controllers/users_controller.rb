@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new, :create] 
+  skip_before_filter :require_login, only: [:index, :new, :create,] 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-def index
-  if params[:tag]
-    @users = User.tagged_with(params[:tag])
-  else
-    @users = User.all
+  def index
+    if params[:tag]
+      @users = User.tagged_with(params[:tag])
+    else
+      @users = User.all
+    end
   end
-end
 
   def show
     @user = User.find(params[:id])

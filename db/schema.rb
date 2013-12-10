@@ -11,14 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210202914) do
+ActiveRecord::Schema.define(version: 20131210223848) do
 
   create_table "references", force: true do |t|
     t.text     "comment"
-    t.integer  "user_id"
+    t.integer  "source_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "target_id"
   end
+
+  add_index "references", ["source_id"], name: "index_references_on_source_id"
+  add_index "references", ["target_id", "source_id"], name: "index_references_on_target_id_and_source_id"
+  add_index "references", ["target_id"], name: "index_references_on_target_id"
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

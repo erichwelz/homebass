@@ -7,7 +7,7 @@ class ReferencesController < ApplicationController
 
   def create
   	@reference = @user.references.build(reference_params)
-  	@reference.user_id = @user.id
+  	@reference.source = current_user
   
   	if @reference.save
   		redirect_to @user, notice: 'Reference Posted'
@@ -25,8 +25,8 @@ class ReferencesController < ApplicationController
   def reference_params
   	params.require(:reference).permit(:comment, :user_id)
   end
-
-  def load_user
+def
+   load_user
   	@user = User.find(params[:user_id])
   end
 end
