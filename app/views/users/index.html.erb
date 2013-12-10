@@ -8,6 +8,7 @@
     <li>city: <%= user.city %></li>
     <li>postal_code: <%= user.postal_code %></li>
     <li>bio: <%= truncate(user.bio, length: 100) %></li>
+    <li>Genres: <%= user.tag_list %></li>
   </ul>
 
 <% end %>
