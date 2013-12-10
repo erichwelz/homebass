@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+  has_many :references
   authenticates_with_sorcery!
 
   acts_as_taggable

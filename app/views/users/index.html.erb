@@ -3,7 +3,7 @@
 <% @users.each do |user| %>
 
   <ul>
-    <li>Name: <%= user.full_name %></li>
+    <li>Name: <%= link_to "#{user.full_name}", user_path(user.id) %></li>
     <li>Email: <%= user.email %></li>
     <li>city: <%= user.city %></li>
     <li>postal_code: <%= user.postal_code %></li>
