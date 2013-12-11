@@ -1,0 +1,19 @@
+<% if current_user %>
+  
+  <h3>References</h3>
+
+  <p>References for <%= @user.first_name %></p>
+
+<% @user.target_references.each do |reference| %>
+      Feedback_value: <%= reference.feedback_textifier %><br> 
+      Comment: <%= reference.comment %><br>
+      Jammed together: <%= reference.jammed %><br>
+      Performed: <%= reference.performed %><br>
+      Recorded: <%= reference.recorded %>
+      <hr>
+      <% if reference.source != nil %>
+      <em>by <%= reference.source.full_name %></em>
+       Reference Created on: <%= reference.created_at %>
+      <% end %>
+  <% end %>
+<% end %>  

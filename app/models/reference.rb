@@ -1,5 +1,6 @@
 class Reference < ActiveRecord::Base
   validates_presence_of :comment
+  validates_presence_of :feedback_value
 
   belongs_to :source, :class_name => "User" 
   belongs_to :target, :class_name => "User"
@@ -14,5 +15,5 @@ class Reference < ActiveRecord::Base
         return "Negative"
       end            
     end
-  
+
 end
