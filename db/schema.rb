@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210223848) do
+ActiveRecord::Schema.define(version: 20131211163607) do
 
   create_table "references", force: true do |t|
     t.text     "comment"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20131210223848) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "target_id"
+    t.integer  "feedback_value"
+    t.boolean  "jammed"
+    t.boolean  "performed"
+    t.boolean  "recorded"
   end
 
   add_index "references", ["source_id"], name: "index_references_on_source_id"
