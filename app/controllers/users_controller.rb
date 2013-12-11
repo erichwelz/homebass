@@ -14,7 +14,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if current_user
-      @reference = @user.references.build
+        @reference = @user.target_references.build       
+       #@reference = @user.references.build
     end
   end
 

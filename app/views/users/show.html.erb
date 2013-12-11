@@ -16,7 +16,7 @@
 
 	<p>References for <%= @user.first_name %></p>
 
-	<% @user.references.each do |reference| %>
+	<% @user.target_references.each do |reference| %>
 		<p>
 			<%= reference.comment %>
 			<hr>

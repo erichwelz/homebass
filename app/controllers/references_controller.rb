@@ -6,7 +6,7 @@ class ReferencesController < ApplicationController
   end
 
   def create
-  	@reference = @user.references.build(reference_params)
+  	@reference = @user.target_references.build(reference_params)
   	@reference.source = current_user
   
   	if @reference.save
@@ -23,7 +23,7 @@ class ReferencesController < ApplicationController
 
   private
   def reference_params
-  	params.require(:reference).permit(:comment, :user_id)
+  	params.require(:reference).permit(:comment, :source_id, :target_id)
   end
 def
    load_user
