@@ -12,11 +12,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-    if current_user
-        @reference = @user.target_references.build       
-       #@reference = @user.references.build
-    end
+      if current_user
+        @reference = @user.target_references.build 
+      end
   end
 
   def new
@@ -28,6 +26,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
+
 
     respond_to do |format|
       if @user.save
