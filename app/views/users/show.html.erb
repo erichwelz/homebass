@@ -1,5 +1,5 @@
 <ul>
-
+	<li>Feedback_rating: <%= @user.target_references.sum(:feedback_value) %></li>
   <li>first_name: <%= @user.first_name %></li>
   <li>last_name: <%= @user.last_name %></li>
   <li>Genres: <%= @user.genre_list %></li>
@@ -18,7 +18,12 @@
 
 	<% @user.target_references.each do |reference| %>
 		<p>
-			<%= reference.comment %>
+
+			Feedback_value: <%= reference.feedback_textifier %><br>	
+			Comment: <%= reference.comment %><br>
+			Jammed together: <%= reference.jammed %><br>
+			Performed: <%= reference.performed %><br>
+			Recorded: <%= reference.recorded %>
 			<hr>
 			<% if reference.source != nil %>
 			<em>by <%= reference.source.full_name %></em>

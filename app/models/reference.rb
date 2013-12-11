@@ -3,4 +3,16 @@ class Reference < ActiveRecord::Base
 
   belongs_to :source, :class_name => "User" 
   belongs_to :target, :class_name => "User"
+
+    def feedback_textifier
+      case feedback_value
+      when 1
+        return "Positive"
+      when 0
+        return "Neutral"
+      when -1
+        return "Negative"
+      end            
+    end
+  
 end
