@@ -15,7 +15,7 @@ user1 = User.create!({
   city: "Edmonton",
   postal_code: "T6H 1K6",
   password: "password",
-  password_confirmation: "test",
+  password_confirmation: "password",
   bio: "Test was born in testland and grew up wanting to make an amazing kickstarter clone. Also the quick brown fox jumped over the lazy red dog.",
   genre_list: "rand, pi, sin, cosine",
   instrument_list: "bass,treble,midrange"
@@ -27,9 +27,9 @@ user2 = User.create!({
   first_name: "dave",
   last_name: "dave",
   password: "password",
+  password_confirmation: "password",
   city: "Toronto",
   postal_code: "M5H 2N2",
-  password_confirmation: "dave",
   bio: "Dave is known for maths. Also the quick brown fox jumped over the lazy red dog.",
   genre_list: "rand, pi, sin, cosine",
   instrument_list:"tenor,timbre,tautology"
@@ -43,10 +43,26 @@ user3 = User.create!({
   city: "Toronto",
   postal_code: "M4K 2L7",
   password: "password",
-  password_confirmation: "nothing",
+  password_confirmation: "password",
   bio: "Nothing don't care. Nothing don't care about nothing at all. Quick dogs, lazy foxes, nothing matters to this guy.",
   genre_list: "rand, pi, sin, cosine",
   instrument_list: "truancy,hats,boots,tenor"
   }
 )
+
+10.times do |i|
+  User.create!({
+  email: "nothing#{i}@gmail.com",
+  first_name: "nothing#{i}",
+  last_name: "project",
+  city: "Toronto",
+  postal_code: "M4K 2L7",
+  password: "password",
+  password_confirmation: "password",
+  bio: Faker::Lorem.sentence(word_count = 20),
+  genre_list: "rand, pi, sin, cosine",
+  instrument_list: "tenor,guitar"
+  }
+)
+end
 

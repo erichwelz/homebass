@@ -2,6 +2,8 @@ class Reference < ActiveRecord::Base
   validates_presence_of :comment
   validates_presence_of :feedback_value
 
+  #validates_uniqueness_of :source_id
+
   belongs_to :source, :class_name => "User" 
   belongs_to :target, :class_name => "User"
 
