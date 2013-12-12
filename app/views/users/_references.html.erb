@@ -4,25 +4,26 @@
 
   <p>References for <%= @user.first_name %></p>
 <% @user.target_references.each do |reference| %>
+    <% unless reference.new_record? %>
       Feedback_value: <%= reference.feedback_textifier %><br> 
       Comment: <%= reference.comment %><br>
       Jammed together: <%= reference.jammed %><br>
       Performed: <%= reference.performed %><br>
       Recorded: <%= reference.recorded %>
-      <hr>
-      <% if reference.source != nil %>
-      <em>by <%= reference.source.full_name %></em>
-       Reference Created on: <%= reference.created_at %>
-      <% end %>
+      
+        <% if reference.source != nil %>
+        <em>by <%= reference.source.full_name %></em>
+         Reference Created on: <%= reference.created_at %><hr>
+        <% end %>
+    <% end %>
   <% end %>
  
- <h4>Add a Reference for <%= @user.first_name %>!</h4>
+ <h4>Add a Reference for <%= @user.first_name %></h4>
 
   <%= form_for([@user, @reference]) do |f| %>
     <% if @reference.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@reference.errors.count, "error") %> prohibited this review from being saved:</h2>
-
         <ul>
           <% @reference.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
@@ -31,8 +32,7 @@
       </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :comment %><hr />
+    <div class="field"><br/>
       <%= f.text_area :comment %>
     </div>
     <div class="field">
