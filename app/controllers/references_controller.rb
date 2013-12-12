@@ -9,11 +9,16 @@ class ReferencesController < ApplicationController
   	@reference = @user.target_references.build(reference_params)
   	@reference.source = current_user
   
-  	if @reference.save
-  		redirect_to @user, notice: 'Reference Posted'
-  	else
-  		redirect_to @user
-  	end
+    respond_to do |format|
+    	if @reference.save
+        format.html {redirect_to @user, notice: 'Reference Posted'}
+    	else
+    		format.html { redirect_to @user, alert: "Error in reference, try again!"}
+         #render template: "users/show > Cant find partials
+        format.json { render json: @reference.errors, 
+          status: :unprocessable_entity}
+    	end
+    end
   end
 
   def destroy

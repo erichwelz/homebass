@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   validates_format_of :last_name, :with => /[a-z]/
   validates_format_of :city, :with => /[a-z]/  
   validates_format_of :postal_code, :with => /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/
+
+  validates :source_id, :uniqueness => { :scope => :target_id,
+:message => "You may only write one reference per user." }
   
   validates_uniqueness_of :email
 
