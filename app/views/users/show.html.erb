@@ -1,7 +1,9 @@
 <ul>
 	<li>Feedback_rating: <%= @user.target_references.sum(:feedback_value) %></li>
-	<li>Feedback_percent_positive: <%= number_to_percentage(100*
-	(@user.target_references.sum(:feedback_value) / @user.target_references.count(:feedback_value).to_f), precision: 1 ) %></li>
+	<li>Feedback_score: <%= number_to_percentage((100*
+	@user.target_references.where(feedback_value: 1).count / 
+   [(@user.target_references.where(feedback_value: 1).count +
+   @user.target_references.where(feedback_value: -1).count),1].max.to_f), precision: 1) %></li>
   <li>first_name: <%= @user.first_name %></li>
   <li>last_name: <%= @user.last_name %></li>
   <li>Genres: <%= @user.genre_list %></li>
