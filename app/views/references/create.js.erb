@@ -3,7 +3,6 @@
 <% if @reference.errors.present? %>
   $("#reference-form-errors").html("<%= escape_javascript(render(:partial => '/users/reference_form_errors')) %>");
 <% else %>
-  $("#reference-form-errors").html("");
   $("#references").html("<%= escape_javascript(render(:partial => '/users/references')) %>");
   $("#new_reference")[0].reset();
 <% end %>

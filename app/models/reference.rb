@@ -1,6 +1,6 @@
 class Reference < ActiveRecord::Base
   validates_presence_of :comment
-  validates_presence_of :feedback_value
+  validates_presence_of :feedback_value, message: "rating be selected"
 
   #validates_uniqueness_of :source_id
 
