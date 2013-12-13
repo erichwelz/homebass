@@ -1,0 +1,6 @@
+  <li>Feedback_rating: <%= @user.target_references.sum(:feedback_value) %></li>
+  <li>Feedback_score: <%= number_to_percentage((100*
+  @user.target_references.where(feedback_value: 1).count / 
+   [(@user.target_references.where(feedback_value: 1).count +
+   @user.target_references.where(feedback_value: -1).count),1].max.to_f), precision: 1) %></li>
+  <h4>References left for <%= @user.first_name.capitalize %></h4>
