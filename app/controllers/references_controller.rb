@@ -12,11 +12,10 @@ class ReferencesController < ApplicationController
     respond_to do |format|
     	if @reference.save
         format.html {redirect_to @user, notice: 'Reference Posted'}
+        format.js {}
     	else
     		format.html { redirect_to @user, alert: "Error in reference, try again!"}
-         #render template: "users/show > Cant find partials
-        format.json { render json: @reference.errors, 
-          status: :unprocessable_entity}
+        format.js {} 
     	end
     end
   end

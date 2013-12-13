@@ -13,12 +13,18 @@
   <li>postal_code: <%= @user.postal_code %></li>
   <li>bio: <%= @user.bio %></li>
 </ul>
+  
+  <h3>References</h3>
+
+  <p>References for <%= @user.first_name %></p>
+<div id="references">
+  <%= render "references" %>
+ </div>
 
 
-<div class="Reference form">
-	<%= render "references" %>
+<div class="new-reference">
+	<%= render "new_reference" %>
 </div> 
 	
-
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
