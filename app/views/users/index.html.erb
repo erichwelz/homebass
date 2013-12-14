@@ -1,7 +1,6 @@
 <h1>Listing users</h1>
 
 <% @users.each do |user| %>
-
   <ul>
     <li>Name: <%= link_to "#{user.full_name}", user_path(user.id) %></li>
     <li>Email: <%= user.email %></li>
@@ -10,6 +9,9 @@
     <li>bio: <%= truncate(user.bio, length: 100) %></li>
     <li>Genres: <%= user.genre_list %></li>
     <li>Instruments: <%= user.instrument_list %></li>
+    <% if current_user %>
+    <li>Distance from current_user: <%= user.distance_to(current_user, :km).round(1) %> KM</li>
+      <% end %>
   </ul>
 
 <p>Genres: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>

@@ -2,13 +2,21 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create,] 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  
   def index
-    if params[:tag]
+    if params[:tag] 
       @users = User.tagged_with(params[:tag])
+    elsif current_user
+      @users = current_user.nearbys
     else
       @users = User.all
     end
   end
+
+  # def index
+  #     @users = current_user.near([params[:latitude], params[:longitude]], units: :km) #not working
+
+
 
   def show
     @user = User.find(params[:id])
@@ -51,7 +59,6 @@ class UsersController < ApplicationController
     end
   end
 
-  
   def destroy
     @user.destroy
     respond_to do |format|
@@ -66,6 +73,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:comment, :email, :password, :password_confirmation, :first_name, :last_name, :city, :postal_code, :bio, :instrument_list, :genre_list)
+      params.require(:user).permit(:comment, :email, :password, :password_confirmation, :first_name, :last_name, :city, :postal_code, :bio, :instrument_list, :genre_list, :latitude, :longitude)
     end
 end

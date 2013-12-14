@@ -8,6 +8,8 @@
 
 User.destroy_all
 
+postal_arr = ["M2L 1A5", "M3A 2A5", "M3N 1A5", "M4E 1D2", "M4L 2L7", "M4M 2L7", "M5C 3N6", "M4P 2L7", "M5L 2L7", "M6G 2L7"]
+
 user1 = User.create!({
   email: "test@test.ca",
   first_name: "test",
@@ -16,9 +18,9 @@ user1 = User.create!({
   postal_code: "T6H 1K6",
   password: "password",
   password_confirmation: "password",
-  bio: "Test was born in testland and grew up wanting to make an amazing kickstarter clone. Also the quick brown fox jumped over the lazy red dog.",
-  genre_list: "rand, pi, sin, cosine",
-  instrument_list: "bass,treble,midrange"
+  bio: "I'm interested predominately in string based instruments such as guitar and piano. I'd love to practice with others sometime",
+  genre_list: "Ambient, Big Band, Ska",
+  instrument_list: "Guitar, Piano, Voice(tenor)"
   }
 )
 
@@ -44,7 +46,7 @@ user3 = User.create!({
   postal_code: "M4K 2L7",
   password: "password",
   password_confirmation: "password",
-  bio: "Nothing don't care. Nothing don't care about nothing at all. Quick dogs, lazy foxes, nothing matters to this guy.",
+  bio: Faker::Lorem.sentence(word_count = 20),
   genre_list: "rand, pi, sin, cosine",
   instrument_list: "truancy,hats,boots,tenor"
   }
@@ -56,7 +58,7 @@ user3 = User.create!({
   first_name: "nothing#{i}",
   last_name: "project",
   city: "Toronto",
-  postal_code: "M4K 2L7",
+  postal_code: postal_arr.sample,
   password: "password",
   password_confirmation: "password",
   bio: Faker::Lorem.sentence(word_count = 20),
