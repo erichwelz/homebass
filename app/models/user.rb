@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   geocoded_by :postal_code
 
   acts_as_taggable
+  acts_as_messageable
   acts_as_taggable_on :genres, :instruments
 
   validates_confirmation_of :password
@@ -25,8 +26,6 @@ class User < ActiveRecord::Base
   validates_format_of :city, :with => /[a-z]/  
   validates_format_of :postal_code, :with => /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/
 
-
-  
   validates_uniqueness_of :email
 
   before_validation :upcase_postal
@@ -39,4 +38,18 @@ class User < ActiveRecord::Base
   def full_name
     full_name = first_name.capitalize + " " + last_name.capitalize 
   end     
+
+#methods for Mailboxer
+  def name
+    self.to_s
+  end
+
+  def mailboxer_email(message)
+    email
+  end
+
+  def to_s
+    email
+  end
+
 end

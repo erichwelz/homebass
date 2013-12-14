@@ -20,6 +20,8 @@ gem 'pg'
  gem 'sorcery'
  gem 'paperclip'
 
+gem 'mailboxer'
+
 #tagging for users
  gem 'acts-as-taggable-on'
 
