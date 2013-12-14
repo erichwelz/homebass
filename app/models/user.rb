@@ -1,8 +1,14 @@
 class User < ActiveRecord::Base
   has_many :target_references, class_name: "Reference", foreign_key: :target_id
   has_many :source_references, class_name: "Reference", foreign_key: :source_id
-   
+  
   authenticates_with_sorcery!
+
+  acts_as_messageable :required   => :body
+     # :required   => :body                  # default [:topic, :body]
+     # :class_name => "CustomMessages"       # default "ActsAsMessageable::Message",
+     # :dependent  => :destroy               # default :nullify
+     # :group_messages => true               # default false
 
   geocoded_by :postal_code
 
@@ -25,8 +31,6 @@ class User < ActiveRecord::Base
   validates_format_of :city, :with => /[a-z]/  
   validates_format_of :postal_code, :with => /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/
 
-
-  
   validates_uniqueness_of :email
 
   before_validation :upcase_postal
