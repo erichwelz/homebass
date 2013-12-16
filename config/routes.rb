@@ -1,4 +1,5 @@
 Musicianfinder::Application.routes.draw do
+  resources :password_resets
   root :to => 'users#index'
   resources :user_sessions
   resources :users do

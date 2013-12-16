@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create,] 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  
+
   def index
     if params[:tag] 
       @users = User.tagged_with(params[:tag])
@@ -12,11 +12,6 @@ class UsersController < ApplicationController
       @users = User.all
     end
   end
-
-  # def index
-  #     @users = current_user.near([params[:latitude], params[:longitude]], units: :km) #not working
-
-
 
   def show
     @user = User.find(params[:id])
