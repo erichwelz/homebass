@@ -1,8 +1,10 @@
 class ReferencesController < ApplicationController
   before_filter :load_user
+  skip_before_filter :load_user, only: [:index]
   
   def show
-  	@user = Reference.find(params[:id])
+  	#@user = Reference.find(params[:source_id])
+    @reference = Reference.find(params[:id])
   end
 
   def create
@@ -20,6 +22,11 @@ class ReferencesController < ApplicationController
     end
   end
 
+  def index
+    @user = current_user
+    @my_refs = Reference.where(:source_id == current_user.id) 
+  end
+
   def destroy
   	@reference = Reference.find(params[:id])
   	@reference.destroy
@@ -29,8 +36,7 @@ class ReferencesController < ApplicationController
   def reference_params
   	params.require(:reference).permit(:comment, :source_id, :target_id, :feedback_value, :jammed, :performed, :recorded)
   end
-def
-   load_user
-  	@user = User.find(params[:user_id])
+def load_user
+  	@user = User.find(params[:id])
   end
 end

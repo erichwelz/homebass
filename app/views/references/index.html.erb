@@ -1,0 +1,11 @@
+  <ul>
+<% @my_refs.each do |ref| %>
+    <li>Reference for: <%= ref.target_id %></li>
+    <li><%= link_to "edit","references/#{ref.id}" %></li>
+    <li><%= ref.comment %></li>
+    <li>Jammed: <%= ref.jammed %>
+    Performed: <%= ref.performed %>
+    Recorded: <%= ref.recorded %></li><hr />
+      <% end %>
+</ul>
+  

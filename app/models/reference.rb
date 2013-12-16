@@ -2,7 +2,7 @@ class Reference < ActiveRecord::Base
   validates_presence_of :comment
   validates_presence_of :feedback_value, message: "rating be selected"
 
-validates :source_id, :uniqueness => { :scope => :target_id, :message => "You may only write one reference per user." }
+validates :source_id, :uniqueness => { :scope => :target_id, :message => "You may only write one reference per user. You may manage your references from your home page" }
 
 validate :check_self_reference
 
