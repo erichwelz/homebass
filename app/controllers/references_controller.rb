@@ -34,9 +34,16 @@ class ReferencesController < ApplicationController
 
   private
   def reference_params
-  	params.require(:reference).permit(:comment, :source_id, :target_id, :feedback_value, :jammed, :performed, :recorded)
+  	params.require(:reference).permit(:comment, 
+                                      :source_id, 
+                                      :target_id, 
+                                      :feedback_value, 
+                                      :jammed, 
+                                      :performed, 
+                                      :recorded)
   end
-def load_user
-  	@user = User.find(params[:id])
+
+  def load_user
+    @user = User.find(params[:user_id])
   end
 end
