@@ -1,11 +1,9 @@
 Musicianfinder::Application.routes.draw do
-  get "references/show"
-  get "references/new"
-  get "references/edit"
+  resources :password_resets
   root :to => 'users#index'
   resources :user_sessions
   resources :users do
-    resources :references, :except => [:index]
+    resources :references
   end
 
   get 'tags/:tag', to: 'users#index', as: :tag
