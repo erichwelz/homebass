@@ -5,7 +5,7 @@
     <% unless reference.new_record? %>
       Feedback Value: <%= reference.feedback_textifier %><br> 
       Comment: <%= reference.comment %><br>
-      Jammed Together?  <%= reference.jam_check %><br>
+      Jammed Together?  <%= reference.check("jammed") %><br>
       Performed?  <%= reference.performed_check %><br>
       Recorded?  <%= reference.recorded_check %><br>
         <% if reference.source != nil %>

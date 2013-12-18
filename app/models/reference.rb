@@ -28,6 +28,15 @@ class Reference < ActiveRecord::Base
       end            
     end
   
+  def check(type)
+    case self.send(type.to_sym)
+    when true
+      return "✓"
+    else
+      return "✗"
+    end
+  end
+
   def jam_check
   case jammed
     when true
