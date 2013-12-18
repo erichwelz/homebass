@@ -3,7 +3,6 @@ class ReferencesController < ApplicationController
   skip_before_filter :load_user, only: [:index]
   
   def show
-  	#@user = Reference.find(params[:source_id])
     @reference = Reference.find(params[:id])
   end
 

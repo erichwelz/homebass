@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create,] 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:tag] 
@@ -14,8 +14,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @recipient = User.find(params[:id])
       if current_user
         @reference = @user.target_references.build 
+        @invitation = Invitation.new
+        @invitation.recipient_id = @recipient.id
       end
   end
 

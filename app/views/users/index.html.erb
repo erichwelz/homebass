@@ -4,13 +4,13 @@
   <ul>
     <li>Name: <%= link_to "#{user.full_name}", user_path(user.id) %></li>
     <li>Email: <%= user.email %></li>
-    <li>city: <%= user.city %></li>
-    <li>postal_code: <%= user.postal_code %></li>
-    <li>bio: <%= truncate(user.bio, length: 100) %></li>
+    <li>City: <%= user.city %></li>
+    <li>Postal Code: <%= user.postal_code %></li>
+    <li>Biography: <%= truncate(user.bio, length: 100) %></li>
     <li>Genres: <%= user.genre_list %></li>
     <li>Instruments: <%= user.instrument_list %></li>
     <% if current_user %>
-    <li>Distance from current_user: <%= user.distance_to(current_user, :km).round(1) %> KM</li>
+    <li>Distance from you: <%= user.distance_to(current_user, :km).round(1) %> KM</li>
       <% end %>
   </ul>
 

@@ -4,14 +4,14 @@
 <% end %>
 
 <ul>
-  <li>first_name: <%= @user.first_name %></li>
-  <li>last_name: <%= @user.last_name %></li>
+  <li>First Name: <%= @user.first_name %></li>
+  <li>Last Name: <%= @user.last_name %></li>
   <li>Genres: <%= @user.genre_list %></li>
   <li>Instruments: <%= @user.instrument_list %></li>
   <li>Email: <%= @user.email %></li>
-  <li>city: <%= @user.city %></li>
-  <li>postal_code: <%= @user.postal_code %></li>
-  <li>bio: <%= @user.bio %></li>
+  <li>City: <%= @user.city %></li>
+  <li>Postal Code: <%= @user.postal_code %></li>
+  <li>Biography: <%= @user.bio %></li>
 </ul>
   <h4>Feedback Rating</h4>
   
@@ -25,9 +25,50 @@
 
 <div id="references">
   <%= render "references" %>
- </div>
+</div>
 
+<% if current_user.id == @user.id %>
 
+<div class="invitations">
+  <% @user.invitations_received.each do |invite| %>
+    <p>From: <%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %></p>
+    <p>Subject: <%= invite.subject %></p>
+    <p>Content: <%= invite.content %></p>
+    <p>Sent at: <%= invite.created_at %></p>             
+    <hr />
+  <% end %>
+</div>
+
+<% end %>
+
+<%= form_for([@user, @invitation]) do |f| %>
+  <% if @user.errors.any? %>
+ 
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :recipient_id %>
+
+  <div class="field">
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
 
 	
 <%= link_to 'Edit', edit_user_path(@user) %> |

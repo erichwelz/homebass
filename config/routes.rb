@@ -1,9 +1,12 @@
 Musicianfinder::Application.routes.draw do
-  resources :password_resets
   root :to => 'users#index'
+
+
+  resources :password_resets
   resources :user_sessions
   resources :users do
     resources :references
+    resources :invitations
   end
 
   get 'tags/:tag', to: 'users#index', as: :tag

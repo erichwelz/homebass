@@ -3,14 +3,13 @@
 <% end %>
 <% @user.target_references.each do |reference| %>
     <% unless reference.new_record? %>
-      Feedback_value: <%= reference.feedback_textifier %><br> 
+      Feedback Value: <%= reference.feedback_textifier %><br> 
       Comment: <%= reference.comment %><br>
-      Jammed together: <%= reference.jammed %><br>
-      Performed: <%= reference.performed %><br>
-      Recorded: <%= reference.recorded %>
-      
+      Jammed Together?  <%= reference.jam_check %><br>
+      Performed?  <%= reference.performed_check %><br>
+      Recorded?  <%= reference.recorded_check %><br>
         <% if reference.source != nil %>
-        <em>by <%= reference.source.full_name %></em>
+        <em>Left By: <%= reference.source.full_name %></em><br>
          Reference Created on: <%= reference.created_at %><hr>
         <% end %>
     <% end %>
