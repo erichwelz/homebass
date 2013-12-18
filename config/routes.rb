@@ -1,6 +1,6 @@
 Musicianfinder::Application.routes.draw do
   root :to => 'users#index'
-  get '/users/:id/invitations/:id/read' => "invitations#read", :as => "mark_as_read" 
+  get '/users/:id/invitations/:invitation_id/read' => "invitations#read", :as => "mark_as_read" 
 
   resources :password_resets
   resources :user_sessions

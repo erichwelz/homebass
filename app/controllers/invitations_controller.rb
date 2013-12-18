@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-	before_filter :load_sender
+	before_filter :load_sender, except: [:read]
 
 	def index
 		@invitations = Invitations.all			
@@ -14,10 +14,15 @@ class InvitationsController < ApplicationController
 	end
 
 	def read
-		@invitation = Invitation.find(params[:id])
+		@user = current_user
+		@invitation = Invitation.find(params[:invitation_id])
 		@invitation.read = true
 		@invitation.save
+		if @invitation.save
 		redirect_to user_path(@user)
+		else
+		redirect_to user_path(@user)
+		end
 	end
 
 	def create
@@ -34,7 +39,7 @@ class InvitationsController < ApplicationController
 
 	private
 	def invitation_params
-		params.require(:invitation).permit(:subject, :content, :recipient_id, :users_id)
+		params.require(:invitation).permit(:subject, :content, :recipient_id, :user_id)
 	end
 
 	def load_sender
