@@ -13,6 +13,13 @@ class InvitationsController < ApplicationController
 		@invitation = Invitation.new
 	end
 
+	def read
+		@invitation = Invitation.find(params[:id])
+		@invitation.read = true
+		@invitation.save
+		redirect_to user_path(@user)
+	end
+
 	def create
 		@invitation = @user.invitations.build(invitation_params)
 
