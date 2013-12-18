@@ -39,7 +39,7 @@ class InvitationsController < ApplicationController
 
 	private
 	def invitation_params
-		params.require(:invitation).permit(:subject, :content, :recipient_id, :user_id)
+		params.require(:invitation).permit(:content, :recipient_id, :user_id)
 	end
 
 	def load_sender

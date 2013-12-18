@@ -7,11 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+   <%#= current_user.invitations_received.where(read: false).count %>
 
 <div id="nav">
     <%= link_to "Home", root_url %> |
     <% if current_user %>
-      <%= link_to "My Profile", user_path(current_user.id) %> |
+      <%= link_to "My Profile(#{current_user.invitations_received.where(read: false).count})", user_path(current_user.id) %> |
       <%= link_to "Logout", :logout, method: :post %>
     <% else %>
       <%= link_to "Register", new_user_path %> |

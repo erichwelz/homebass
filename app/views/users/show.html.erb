@@ -1,6 +1,22 @@
 <% if current_user.id == @user.id %>
   <%= link_to "Edit Profile", edit_user_path(current_user.id) %> | 
   <%= link_to "My References", user_references_path(current_user.id) %>
+
+<div class="invitations_unread">
+  <h4>Unread</h4>
+  <% @user.invitations_received.where(read: false).each do |invite| %>
+    <p>From: <%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %></p>
+    
+    | Read?: <%= invite.read %>
+    | ID: <%= invite.id %>
+    | <%= link_to "Mark as read", "#{current_user.id}/invitations/#{invite.id}/read"  %></p>
+    <p>Content: <%= invite.content %> 
+    Sent at: <%= invite.created_at %></p>             
+    <hr />
+  <% end %>
+</div>
+
+
 <% end %>
 
 <ul>
@@ -22,6 +38,7 @@
 <div class="new-reference">
   <%= render "new_reference" %>
 </div> 
+ <!-- @user.invitations_received.where(read: false) -->
 
 <div id="references">
   <%= render "references" %>
@@ -29,18 +46,20 @@
 
 <% if current_user.id == @user.id %>
 
-<div class="invitations">
-  <% @user.invitations_received.each do |invite| %>
+<div class="invitations_read">
+   <h4>Read</h4>
+  <% @user.invitations_received.where(read: true).each do |invite| %>
     <p>From: <%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %></p>
-    <p>Subject: <%= invite.subject %></p>
-    <p>Content: <%= invite.content %></p>
-    <p>Read?: <%= invite.read %></p>
-    <p>ID: <%= invite.id %></p>
-    <p><%= link_to "Mark as read", "#{current_user.id}/invitations/#{invite.id}/read"  %></p>
-    <p>Sent at: <%= invite.created_at %></p>             
+    
+    | Read?: <%= invite.read %>
+    | ID: <%= invite.id %>
+    | <%= link_to "Mark as unread", "#{current_user.id}/invitations/#{invite.id}/read"  %></p>
+    <p>Content: <%= invite.content %> 
+    Sent at: <%= invite.created_at %></p>             
     <hr />
   <% end %>
 </div>
+
 
 <% end %>
 
@@ -58,11 +77,6 @@
   <% end %>
 
   <%= f.hidden_field :recipient_id %>
-
-  <div class="field">
-    <%= f.label :subject %><br>
-    <%= f.text_field :subject %>
-  </div>
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content %>
