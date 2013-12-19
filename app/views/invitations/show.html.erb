@@ -1,0 +1,9 @@
+From: <%= @invitation.user.full_name %>
+
+<%= link_to "#{@invitation.user.full_name}", "/users/#{@invitation.user_id}" %> | Sent at: <%= @invitation.created_at %> 
+    | Message ID: <%= @invitation.id %>
+    <p><%= simple_format @invitation.content %></p><hr>
+
+<div id="new_message">
+  <%= render "users/reply" %>
+</div>

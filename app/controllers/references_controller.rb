@@ -9,7 +9,6 @@ class ReferencesController < ApplicationController
   def create
   	@reference = @user.target_references.build(reference_params)
   	@reference.source = current_user
-  
     respond_to do |format|
     	if @reference.save
         format.html {redirect_to @user, notice: 'Reference Posted'}

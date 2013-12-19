@@ -5,9 +5,9 @@
     <% unless reference.new_record? %>
       Feedback Value: <%= reference.feedback_textifier %><br> 
       Comment: <%= reference.comment %><br>
-      Jammed Together?  <%= reference.jam_check %><br>
-      Performed?  <%= reference.performed_check %><br>
-      Recorded?  <%= reference.recorded_check %><br>
+      Jammed Together?  <%= reference.check("jammed") %><br>
+      Performed?  <%= reference.check("performed")  %><br>
+      Recorded?  <%= reference.check("recorded") %><br>
         <% if reference.source != nil %>
         <em>Left By: <%= reference.source.full_name %></em><br>
          Reference Created on: <%= reference.created_at %><hr>
