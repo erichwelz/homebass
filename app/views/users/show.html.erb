@@ -1,19 +1,6 @@
 <% if current_user.id == @user.id %>
   <%= link_to "Edit Profile", edit_user_path(current_user.id) %> | 
   <%= link_to "My References", user_references_path(current_user.id) %>
-
-<div class="invitations_unread">
-  <h4>Unread</h4>
-  <% @user.invitations_received.where(read: false).each do |invite| %>
-    <p>From: <%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %> Sent: <%= invite.created_at %> 
-    <%= link_to "Reply", "#{current_user.id}/invitations/#{invite.id}"  %>
-    <%= link_to "Mark as Read", "#{current_user.id}/invitations/#{invite.id}/read"  %>
-    </p>
-    <p><%= simple_format invite.content %></p>             
-    <hr />
-  <% end %>
-</div>
-
 <% end %>
 
 <ul>
@@ -40,26 +27,6 @@
   <%= render "references" %>
 </div>
 
-<% if current_user.id == @user.id %>
-
-<div class="invitations_read">
-   <h4>Read</h4>
-  <% @user.invitations_received.where(read: true).each do |invite| %>
-  <p>From: <%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %> Sent: <%= invite.created_at %> 
-    <%= link_to "Reply", "#{current_user.id}/invitations/#{invite.id}"  %>
-    <%= link_to "Mark as Unread", "#{current_user.id}/invitations/#{invite.id}/read"  %>
-    </p>
-    <p><%= simple_format invite.content %></p>             
-    <hr />
-  <% end %>
-</div>
-
-<% end %>
-
 <div id="new_message">
   <%= render "new_message" %>
 </div>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

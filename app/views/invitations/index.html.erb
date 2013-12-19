@@ -1,0 +1,27 @@
+<% if current_user.id == @user.id %>
+  <div class="invitations_unread">
+	  <h4>Unread</h4>
+	  <% @user.invitations_received.where(read: false).each do |invite| %>
+		<p>From: <%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %> 
+		   Sent: <%= invite.created_at %><br> 
+				 <%= link_to "Reply", "#{current_user.id}/invitations/#{invite.id}"  %><br>
+				 <%= link_to "Mark as Read", "invitations/#{invite.id}/read"  %>
+		</p>
+		<p><%= simple_format invite.content %></p>             
+		<hr />
+	  <% end %>
+  </div>
+
+  <div class="invitations_read">
+	<h4>Read</h4>
+	<% @user.invitations_received.where(read: true).each do |invite| %>
+		<p>From: <%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %> 
+		   Sent: <%= invite.created_at %> 
+				 <%= link_to "Reply", "#{current_user.id}/invitations/#{invite.id}" %>
+				 <%= link_to "Mark as Unread", "invitations/#{invite.id}/read" %>
+		</p>
+		<p><%= simple_format invite.content %></p>             
+		<hr />
+    <% end %>
+  </div>
+<% end %>
