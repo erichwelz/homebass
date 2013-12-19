@@ -37,38 +37,4 @@ class Reference < ActiveRecord::Base
     end
   end
 
-  def jam_check
-  case jammed
-    when true
-      return "✓"
-    else
-      return "✗"
-    end
-  end
-
-  def performed_check
-  case performed
-    when true
-      return "✓"
-    else
-      return "✗"
-    end
-  end
-
-  def recorded_check
-  case recorded
-    when true
-      return "✓"
-    else
-      return "✗"
-    end
-  end
-
-  # def check(input)
-  #   if input == true
-  #     return "✓"
-  #   else
-  #     return "✗"
-  #   end
-  # end
 end
