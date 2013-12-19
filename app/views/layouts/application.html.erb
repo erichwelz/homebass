@@ -29,10 +29,9 @@
           </ul>
           
           <ul class="left">
-            <li class="has-dropdown">
               <% if current_user %>
                 <li>
-                  <%= link_to "My Profile", user_path(current_user.id) %>          
+                  <%= link_to "My Profile(#{current_user.invitations_received.where(read: false).count})", user_path(current_user.id) %>          
                 </li>  
                 <li>
                   <%= link_to "Edit Profile", edit_user_path(current_user.id) %></a>
