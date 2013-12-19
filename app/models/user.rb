@@ -47,4 +47,4 @@ class User < ActiveRecord::Base
     self.personal_url = "http://#{self.personal_url}"
   end
 end
-
+end
