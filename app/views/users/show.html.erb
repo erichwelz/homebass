@@ -1,32 +1,32 @@
-<% if current_user.id == @user.id %>
-  <%= link_to "Edit Profile", edit_user_path(current_user.id) %> | 
-  <%= link_to "My References", user_references_path(current_user.id) %>
-<% end %>
-
-<ul>
-  <li>First Name: <%= @user.first_name %></li>
-  <li>Last Name: <%= @user.last_name %></li>
-  <li>Genres: <%= @user.genre_list %></li>
-  <li>Instruments: <%= @user.instrument_list %></li>
-  <li>Email: <%= @user.email %></li>
-  <li>City: <%= @user.city %></li>
-  <li>Postal Code: <%= @user.postal_code %></li>
-  <li>Biography: <%= @user.bio %></li>
-</ul>
-  <h4>Feedback Rating</h4>
-  
-<div id="feedback-rating">
-  <%= render "feedback_rating" %>
- </div>
-
-<div class="new-reference">
-  <%= render "new_reference" %>
-</div> 
-
-<div id="references">
-  <%= render "references" %>
+<div class="row">
+  <div class="large-6 columns">
+    <h4><%= @user.full_name %></h4>   
+    <p>
+      City: <%= @user.city %><br>
+      Genres: <%= @user.genre_list %><br>
+      Instruments: <%= @user.instrument_list %><br>
+      Email: <%= @user.email %><br>
+      Biography: <%= @user.bio %><br>
+    </p>
+    <hr />
+  </div>
 </div>
 
-<div id="new_message">
-  <%= render "new_message" %>
+<div class="row">
+  <div class="large-3 columns">
+      <h4>Feedback Rating</h4>
+      <%= render "feedback_rating" %>
+      <hr />
+  </div>
 </div>
+
+<div class="row">    
+    <div class="large-6 columns">
+      <%= render "new_reference" %>
+    </div> 
+</div>
+<div class="row">
+      <%= render "new_message" %>
+</div>
+
+      <%= render "references" %>

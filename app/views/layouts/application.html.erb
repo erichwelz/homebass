@@ -36,10 +36,13 @@
           <ul class="left">
               <% if current_user %>
                 <li>
-                  <%= link_to "My Profile(#{current_user.invitations_received.where(read: false).count})", user_path(current_user.id) %>          
+                  <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id) %>          
+                </li>
+                <li>
+                  <%= link_to "My References", user_references_path(current_user.id) %>
                 </li>  
                 <li>
-                  <%= link_to 'Inbox', user_invitations_path(@user) %>
+                  <%= link_to "Inbox(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
                 </li>
               <% end %>
           </ul>
