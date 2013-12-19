@@ -1,7 +1,9 @@
 <div class="row">  
+  
   <% @my_refs.each do |ref| %>
-
-    <h4>Reference Left For: <%= ref.target_id %></h4>
+    <% if ref.target %>
+      <h4>Reference Left For: <%= ref.target.full_name %></h4> 
+    <% end %>
     <p>
       Feedback: <%= ref.feedback_textifier %><br>
       Content: <%= ref.comment %><br>
@@ -9,7 +11,7 @@
       Performed: <%= ref.check("performed") %>
       Recorded: <%= ref.check("recorded") %><br>
       Last Updated: <%= ref.updated_at %><br>
-      <%= link_to "Update This Reference","references/#{ref.id}" %><br>
+      <%= link_to "Update This Reference","references/#{ref.id}/edit" %><br>
     </p>
     <hr />
   <% end %>

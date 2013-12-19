@@ -20,12 +20,12 @@ class ReferencesController < ApplicationController
     end
   end
 
-def edit
-  @reference = Reference.find(params[:id])
-end
+  def edit
+    @reference = Reference.find(params[:id])
+  end
 
-def update
-  @reference = Reference.find(params[:id])
+  def update
+    @reference = Reference.find(params[:id])
       if @reference.update(reference_params)
         redirect_to user_references_path
       else
@@ -33,13 +33,10 @@ def update
     end
   end
 
-
   def index
     @user = current_user
     @my_refs = Reference.where(:source_id == current_user.id) 
   end
-
-
 
   def destroy
   	@reference = Reference.find(params[:id])
