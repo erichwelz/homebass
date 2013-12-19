@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
    
   validates_confirmation_of :password
 
-  validates_length_of :password, :minimum => 6, :allow_blank => false
+  validates_length_of :password, :minimum => 6, :allow_blank => false, :on => :create
   validates_length_of :first_name, :maximum => 35, :allow_blank => false
   validates_length_of :last_name, :maximum => 35, :allow_blank => false
 
@@ -33,6 +33,13 @@ class User < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :genres, :instruments
 
+  def smart_add_url_protocol
+    unless 
+      self.url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
+      self.url = "http://#{self.url}"
+    end
+  end
+  
   def upcase_postal
     self.postal_code.upcase!
   end
