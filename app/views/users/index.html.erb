@@ -1,22 +1,20 @@
-<h1>Listing users</h1>
+<div class="row">
+  <h1>Listing Musicians</h1>
+  <div class="medium-9 colmuns">
+    <% @users.each do |user| %>
+      <h5><%= link_to "#{user.full_name}", user_path(user.id) %></h5>
+        <p>City: <%= user.city %><br>
+           Genres: <%= user.genre_list %><br>
+           Instruments: <%= user.instrument_list %><br>
+        <% if current_user %>
+           Distance from you: <%= user.distance_to(current_user, :km).round(1) %> KM<br>
+        <% end %>
+           Email: <%= user.email %><br>
+           Biography: <%= truncate(user.bio, length: 100) %>
+        </p>
+<h6>Click to Sort by Genre: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h6>
+<h6>Click to Sort by Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h6>
+    <% end %>
+  </div>
+</div>
 
-<% @users.each do |user| %>
-  <ul>
-    <li>Name: <%= link_to "#{user.full_name}", user_path(user.id) %></li>
-    <li>Email: <%= user.email %></li>
-    <li>City: <%= user.city %></li>
-    <li>Postal Code: <%= user.postal_code %></li>
-    <li>Biography: <%= truncate(user.bio, length: 100) %></li>
-    <li>Genres: <%= user.genre_list %></li>
-    <li>Instruments: <%= user.instrument_list %></li>
-    <% if current_user %>
-    <li>Distance from you: <%= user.distance_to(current_user, :km).round(1) %> KM</li>
-      <% end %>
-  </ul>
-
-<p>Genres: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
-<p>Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
-
-<% end %>
-
-<%= link_to 'New User', new_user_path %>
