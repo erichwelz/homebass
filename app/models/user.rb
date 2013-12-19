@@ -5,10 +5,11 @@ class User < ActiveRecord::Base
   has_many :invitations
   has_many :invitations_received, class_name: "Invitation", foreign_key: :recipient_id
 
+  before_validation :smart_add_url_protocol
   before_validation :upcase_postal
   after_validation :geocode, :if => :postal_code_changed?
    
-  validates_confirmation_of :password
+  validates_confirmation_of :password 
 
   validates_length_of :password, :minimum => 6, :allow_blank => false, :on => :create
   validates_length_of :first_name, :maximum => 35, :allow_blank => false
@@ -33,13 +34,6 @@ class User < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :genres, :instruments
 
-  def smart_add_url_protocol
-    unless 
-      self.url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
-      self.url = "http://#{self.url}"
-    end
-  end
-  
   def upcase_postal
     self.postal_code.upcase!
   end
@@ -47,4 +41,10 @@ class User < ActiveRecord::Base
   def full_name
     full_name = first_name.capitalize + " " + last_name.capitalize 
   end     
+
+  def smart_add_url_protocol
+  unless self.personal_url[/\Ahttp:\/\//] || self.personal_url[/\Ahttps:\/\//]
+    self.personal_url = "http://#{self.personal_url}"
+  end
 end
+
