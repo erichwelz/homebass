@@ -1,7 +1,9 @@
-<% if @user.target_references.count >= 1 %>
-<h4>References left for <%= @user.first_name.capitalize %></h4>
-<% end %>
-<% @user.target_references.each do |reference| %>
+<div class="row">
+  <% if @user.target_references.count >= 1 %>
+    <h4>References left for <%= @user.first_name.capitalize %></h4>
+  <% end %>
+
+  <% @user.target_references.each do |reference| %>
     <% unless reference.new_record? %>
       Feedback Value: <%= reference.feedback_textifier %><br> 
       Comment: <%= reference.comment %><br>
@@ -9,8 +11,9 @@
       Performed?  <%= reference.check("performed")  %><br>
       Recorded?  <%= reference.check("recorded") %><br>
         <% if reference.source != nil %>
-        <em>Left By: <%= reference.source.full_name %></em><br>
-         Reference Created on: <%= reference.created_at %><hr>
+          <em>Left By: <%= reference.source.full_name %></em><br>
+          Reference Created on: <%= reference.created_at %><hr>
         <% end %>
     <% end %>
   <% end %>
+</div>

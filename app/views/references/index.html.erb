@@ -1,15 +1,16 @@
 <div class="row">  
   <% @my_refs.each do |ref| %>
-    <ul>
-      <li>Reference for: <%= ref.target_id %></li>
-      <li><%= link_to "edit","references/#{ref.id}/edit" %></li>
-      <li>Feedback: <%= ref.feedback_textifier %></li>
-      <li><%= ref.comment %></li>
-      <li>Jammed: <%= ref.jammed %>
-          Performed: <%= ref.performed %>
-          Recorded: <%= ref.recorded %></li>
-      <li>Last Updated: <%= ref.updated_at %></li>
-    </ul>
+
+    <h4>Reference Left For: <%= ref.target_id %></h4>
+    <p>
+      Feedback: <%= ref.feedback_textifier %><br>
+      Content: <%= ref.comment %><br>
+      Jammed: <%= ref.check("jammed") %>
+      Performed: <%= ref.check("performed") %>
+      Recorded: <%= ref.check("recorded") %><br>
+      Last Updated: <%= ref.updated_at %><br>
+      <%= link_to "Update This Reference","references/#{ref.id}" %><br>
+    </p>
     <hr />
   <% end %>
 </div>

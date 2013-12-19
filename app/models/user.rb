@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   def upcase_postal
     self.postal_code.upcase!
   end
-
+  
   def full_name
     full_name = first_name.capitalize + " " + last_name.capitalize 
   end     

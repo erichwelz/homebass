@@ -21,7 +21,12 @@
         <section class="top-bar-section">
           <ul class="right">
             <% if current_user %>
-              <li><%= link_to "Logout", :logout, method: :post %></li>
+              <li>
+                  <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+              </li>
+              <li>
+                <%= link_to "Logout", :logout, method: :post %>
+              </li>
             <% else %>
               <li><%= link_to "Register", new_user_path %></li> 
               <li><%= link_to "Login", :login %></li>
@@ -31,10 +36,13 @@
           <ul class="left">
               <% if current_user %>
                 <li>
-                  <%= link_to "My Profile(#{current_user.invitations_received.where(read: false).count})", user_path(current_user.id) %>          
+                  <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id) %>          
+                </li>
+                <li>
+                  <%= link_to "My References", user_references_path(current_user.id) %>
                 </li>  
                 <li>
-                  <%= link_to "Edit Profile", edit_user_path(current_user.id) %></a>
+                  <%= link_to "Inbox(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
                 </li>
               <% end %>
           </ul>
