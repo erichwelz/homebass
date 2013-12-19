@@ -1,0 +1,40 @@
+<% if current_user %>
+
+ <h4>Change Reference for <%= @user.first_name %></h4>
+ 
+  <%= form_for([@user, @reference]) do |f| %>
+    <div id="reference-form-errors" > 
+       <%= render :partial => "/users/reference_form_errors" %>
+    </div>
+
+    <div class="field"><br/>
+      <%= f.text_area :comment %>
+    </div>
+    <div class="field">
+      <%= f.radio_button :feedback_value, 1 %>
+      <%= f.label :feedback_value, "Positive" %>
+      <%= f.radio_button :feedback_value, 0 %>
+      <%= f.label :feedback_value, "Neutral" %>
+      <%= f.radio_button :feedback_value, -1 %>
+      <%= f.label :feedback_value, "Negative" %>
+    </div>
+    <div class="field">
+      <%= f.check_box :jammed %>
+      <%= f.label :jammed, "We've jammed together" %><br>
+    </div>
+    <div class="field">
+      <%= f.check_box :performed %>
+      <%= f.label :performed, "We've performed together" %><br>
+    </div>  
+    <div class="field">
+      <%= f.check_box :recorded %>
+      <%= f.label :recorded, "We've recorded together" %><br>
+    </div>              
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>Please <%= link_to 'log in', new_session_path %> to leave a reference.</p>
+<% end %>

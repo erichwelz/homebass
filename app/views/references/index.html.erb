@@ -2,7 +2,8 @@
   <% @my_refs.each do |ref| %>
     <ul>
       <li>Reference for: <%= ref.target_id %></li>
-      <li><%= link_to "edit","references/#{ref.id}" %></li>
+      <li><%= link_to "edit","references/#{ref.id}/edit" %></li>
+      <li>Feedback: <%= ref.feedback_textifier %></li>
       <li><%= ref.comment %></li>
       <li>Jammed: <%= ref.jammed %>
           Performed: <%= ref.performed %>
