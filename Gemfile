@@ -18,7 +18,7 @@ source 'https://rubygems.org'
   gem 'jquery-ui-rails'
   gem 'jbuilder', '~> 1.2'
 
-  gem 'turbolinks'
+  #gem 'turbolinks'
 
 group :doc do
   gem 'sdoc', require: false
