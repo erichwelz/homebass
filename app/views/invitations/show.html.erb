@@ -1,9 +1,9 @@
-From: <%= @invitation.user.full_name %>
-
-<%= link_to "#{@invitation.user.full_name}", "/users/#{@invitation.user_id}" %> | Sent at: <%= @invitation.created_at %> 
-    | Message ID: <%= @invitation.id %>
-    <p><%= simple_format @invitation.content %></p><hr>
-
-<div id="new_message">
+<div class="row">
+  <div class="large-6 columns">
+    <span class="secondary radius label">From: </span><%= link_to "#{@invitation.user.full_name}", "/users/#{@invitation.user_id}" %>
+    <span class="secondary radius label">Sent: </span><%= @invitation.created_at.to_formatted_s(:long) %>
+  	<p>
+  	  <%= simple_format @invitation.content %>
+  	</p><hr />
   <%= render "users/reply" %>
 </div>

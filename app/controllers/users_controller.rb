@@ -82,6 +82,8 @@ class UsersController < ApplicationController
                                  :instrument_list, 
                                  :genre_list, 
                                  :latitude, 
-                                 :longitude)
+                                 :longitude,
+                                 :looking_for,
+                                 :personal_url)
   end
 end

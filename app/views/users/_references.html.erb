@@ -12,7 +12,7 @@
       Recorded?  <%= reference.check("recorded") %><br>
         <% if reference.source != nil %>
           <em>Left By: <%= reference.source.full_name %></em><br>
-          Reference Created on: <%= reference.created_at %><hr>
+          Reference Created on: <%= reference.created_at.to_formatted_s(:long) %><hr>
         <% end %>
     <% end %>
   <% end %>

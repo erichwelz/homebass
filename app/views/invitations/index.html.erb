@@ -4,9 +4,9 @@
 	  <h3>Unread Mail</h3>
 	    <% @user.invitations_received.where(read: false).each do |invite| %>
 		  <span class="secondary radius label">From:  </span><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %>
-		     <span class="secondary radius label">Sent at:  </span><%= invite.created_at %><br><br> 
+		     <span class="secondary radius label">Sent:  </span><%= invite.created_at.to_formatted_s(:long) %><br><br> 
 			  	   <%= link_to "Mark as Read", "invitations/#{invite.id}/read"  %> |
-			  	   <%= link_to "Reply", "#{current_user.id}/invitations/#{invite.id}"  %>
+			  	   <%= link_to "Reply", "invitations/#{invite.id}"  %>
 		  </p>
 		  <span class="secondary radius label">Message: </span><p><%= simple_format invite.content %></p>             
 		  <hr />
@@ -17,9 +17,9 @@
 	  <h3>Read Mail</h3>
 	  <% @user.invitations_received.where(read: true).each do |invite| %>
 	    <p><span class="secondary radius label">From: </span><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %>	 
-	       <span class="secondary radius label">Sent at: </span><%= invite.created_at %><br><br> 
+	       <span class="secondary radius label">Sent: </span><%= invite.created_at.to_formatted_s(:long) %><br><br> 
 			     <%= link_to "Mark as Unread", "invitations/#{invite.id}/read" %> |
-	    		 <%= link_to "Reply", "#{current_user.id}/invitations/#{invite.id}" %>
+	    		 <%= link_to "Reply", "invitations/#{invite.id}" %>
 	    </p>
 	    <span class="secondary radius label">Message: </span><p><%= simple_format invite.content %></p>             
 	    <hr />

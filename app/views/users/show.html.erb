@@ -7,6 +7,8 @@
       Instruments: <%= @user.instrument_list %><br>
       Email: <%= @user.email %><br>
       Biography: <%= @user.bio %><br>
+      Looking For: <%= @user.looking_for %><br>
+      Link:  <a href=<%="http://#{@user.personal_url}"%>>Click Me</a><br>
     </p>
     <hr />
   </div>
@@ -27,6 +29,7 @@
 </div>
 <div class="row">
       <%= render "new_message" %>
-</div>
-
+  </div>
+<div class="row">
       <%= render "references" %>
+</div>

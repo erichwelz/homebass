@@ -12,6 +12,7 @@
            City: <%= user.city %><br>
            Email: <%= user.email %><br>
            Biography: <%= truncate(user.bio, length: 100) %>
+           Looking for: <%= truncate(user.looking_for, length: 100) %>
         </p>
 <h6>Click to Sort by Genre: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h6>
 <h6>Click to Sort by Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h6>
