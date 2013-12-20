@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                     :medium => "300x300>", 
                     :thumb => "100x100>" }, :default_url => "/images/:attachment/missing_:style.png"
 
-  before_validation :smart_add_url_protocol
+  #before_validation :smart_add_url_protocol
   before_validation :upcase_postal
   after_validation :geocode, :if => :postal_code_changed?
    
@@ -46,9 +46,16 @@ class User < ActiveRecord::Base
     full_name = first_name.capitalize + " " + last_name.capitalize 
   end     
   
-  def smart_add_url_protocol
-  unless self.personal_url[/\Ahttp:\/\//] || self.personal_url[/\Ahttps:\/\//]
-    self.personal_url = "http://#{self.personal_url}"
+  # def smart_add_url_protocol
+  #   unless self.personal_url[/\Ahttp:\/\//] || self.personal_url[/\Ahttps:\/\//]
+  #     self.personal_url = "http://#{self.personal_url}"
+  #   end
+  # end
+  def self.search(search)
+    if search
+      where 'bio LIKE ?', "%#{search}%"
+    else
+      scoped
+    end
   end
-end
 end

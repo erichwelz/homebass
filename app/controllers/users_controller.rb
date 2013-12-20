@@ -3,13 +3,12 @@ class UsersController < ApplicationController
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:tag] 
-      @users = User.tagged_with(params[:tag])
-    elsif current_user
-      @users = current_user.nearbys
-    else
-      @users = User.all
-    end
+    @users = User.page(params[:page]).search(params[:search])
+    # if params[:tag] 
+    #   @users = User.page(params[:page]).per(5).tagged_with(params[:tag])
+    # else
+    #   @users = User.page(params[:page]).per(5)
+    # end
   end
 
   def show

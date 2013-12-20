@@ -6,6 +6,7 @@ source 'https://rubygems.org'
   gem 'geocoder'
   gem 'sorcery'
   gem 'paperclip'
+  gem "kaminari"
   gem 'foundation-rails'
   gem 'acts-as-taggable-on'
 

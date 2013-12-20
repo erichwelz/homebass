@@ -25,16 +25,16 @@ user1 = User.create!({
 )
 
 user2 = User.create!({
-  email: "dave@dave.ca",
+  email: "dave@gmail.ca",
   first_name: "dave",
-  last_name: "dave",
+  last_name: "merritt",
   password: "password",
   password_confirmation: "password",
   city: "Toronto",
   postal_code: "M5H 2N2",
-  bio: "Dave is known for maths. Also the quick brown fox jumped over the lazy red dog.",
-  genre_list: "rand, pi, sin, cosine",
-  instrument_list:"tenor,timbre,tautology"
+  bio: "I enjoy the sound of staple guns",
+  genre_list: "Prog, Metal, Instrumental",
+  instrument_list:"Guitar, Bass, Drums"
   }
 )
 
@@ -47,12 +47,12 @@ user3 = User.create!({
   password: "password",
   password_confirmation: "password",
   bio: Faker::Lorem.sentence(word_count = 20),
-  genre_list: "rand, pi, sin, cosine",
-  instrument_list: "truancy,hats,boots,tenor"
+  genre_list: "Rock, Pop, Prog",
+  instrument_list: "Guitar, Drums, Piano"
   }
 )
 
-10.times do |i|
+50.times do |i|
   User.create!({
   email: "nothing#{i}@gmail.com",
   first_name: "nothing#{i}",
@@ -62,8 +62,8 @@ user3 = User.create!({
   password: "password",
   password_confirmation: "password",
   bio: Faker::Lorem.sentence(word_count = 20),
-  genre_list: "rand, pi, sin, cosine",
-  instrument_list: "tenor,guitar"
+  genre_list: "Classical, Jazz",
+  instrument_list: "Bass, Violin"
   }
 )
 end

@@ -11,43 +11,53 @@
     <%= csrf_meta_tags %>
   </head>
     <body>
-      <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-          <li class="name">
-            <h1><a href="/">HomeBass</a></h1>
-          </li>
-        </ul>
+      <div class="fixed">
+        <nav class="top-bar" data-topbar>
+          <ul class="title-area">
+            <li class="name">
+              <h1><a href="/">HomeBass</a></h1>
+            </li>
+          </ul>
 
-      <section class="top-bar-section">
-        <% if current_user %>
-          <ul class="right">
-            <li>
-              <%= link_to "Inbox(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
-            </li>           
-            <li class="has-dropdown">
-              <a href="#">
-                <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id) %>
-              </a>
-          <ul class="dropdown">
-            <li>
-              <%= link_to "My References", user_references_path(current_user.id) %>
-            </li>
-            <li>
-              <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-            </li>    
-            <li>
-              <%= link_to "Logout", :logout, method: :post %>
-            </li>
-        <% else %>
-          <ul class="right">
-            <li><%= link_to "Register", new_user_path %></li> 
-            <li><%= link_to "Login", :login %></li>
-          </ul>
-        <% end %>
-          </ul>
-          </ul>    
+        <section class="top-bar-section">
+            <ul class="right">
+              <li>
+                <%= form_tag users_path, :method => 'get' do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+              </li>
+              <li>
+                <% submit_tag "Search", :name => nil %>
+                <% end %>
+              </li>
+            <% if current_user %>
+              <li>
+                <%= link_to "Inbox(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
+              </li>           
+              <li class="has-dropdown">
+                <a href="#">
+                  <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id) %>
+                </a>
+            <ul class="dropdown">
+              <li>
+                <%= link_to "My References", user_references_path(current_user.id) %>
+              </li>
+              <li>
+                <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+              </li>    
+              <li>
+                <%= link_to "Logout", :logout, method: :post %>
+              </li>
+            <% else %>
+            <ul class="right">
+              <li><%= link_to "Register", new_user_path %></li> 
+              <li><%= link_to "Login", :login %></li>
+            </ul>
+            <% end %>
+            </ul>
+            </ul>    
         </section>
-      </nav>
+  </nav>
+</div>
 
 <div>
   <p id="notice"><%= flash[:notice] %></p>
