@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.page(params[:page]).search(params[:search])
+    @users = User.page(params[:page]).per(10).search(params[:search])
     # if params[:tag] 
     #   @users = User.page(params[:page]).per(5).tagged_with(params[:tag])
     # else

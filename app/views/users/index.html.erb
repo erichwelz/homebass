@@ -10,7 +10,6 @@
            Distance from you: <%= user.distance_to(current_user, :km).round(1) %> KM<br>
         <% end %>
            City: <%= user.city %><br>
-           Email: <%= user.email %><br>
            Biography: <%= truncate(user.bio, length: 100) %><br>
            Looking for: <%= truncate(user.looking_for, length: 100) %>
         </p>
