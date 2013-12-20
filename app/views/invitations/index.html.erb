@@ -1,29 +1,51 @@
-<div class="row">
-  <% if current_user.id == @user.id %>
-    <div class="invitations_unread">
-	  <h2>Unread Mail</h2>
-	    <% @user.invitations_received.where(read: false).each do |invite| %>
-		  <span class="secondary radius label">From:  </span><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %>
-		     <span class="secondary radius label">Sent:  </span><%= invite.created_at.to_formatted_s(:long) %> 
-			  	   <%= link_to "Mark as Read", "invitations/#{invite.id}/read"  %> |
-			  	   <%= link_to "Reply", "invitations/#{invite.id}"  %>
-		  </p>
-<p><%= simple_format invite.content %></p>             
-		  <hr />
-	    <% end %>
-    </div>
-
-    <div class="invitations_read">
-	  <h2>Read Mail</h2>
-	  <% @user.invitations_received.where(read: true).each do |invite| %>
-	    <p><span class="secondary radius label">From: </span><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %>	 
-	       <span class="secondary radius label">Sent: </span><%= invite.created_at.to_formatted_s(:long) %>
-			     <%= link_to "Mark as Unread", "invitations/#{invite.id}/read" %> |
-	    		 <%= link_to "Reply", "invitations/#{invite.id}" %>
-	    </p>
-<p><%= simple_format invite.content %></p>             
-	    <hr />
-      <% end %>
-    </div>
+<h2>Unread Mail</h2>
+<table>
+  <thead>
+    <tr>
+      <th width="100">From</th>
+      <th width="500">Message</th>
+ 	  <th width="150">Sent</th>
+      <th width="110">Mark as Read</th>
+      <th width="60">Reply</th>
+    </tr>
+  </thead>
+  	<% if current_user.id == @user.id %>
+  	<% @user.invitations_received.where(read: false).each do |invite| %>
+  <tbody>
+    <tr>
+      <td><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %></td>
+      <td><%= simple_format invite.content %></td>
+      <td><%= invite.created_at.to_formatted_s(:long) %></td>
+      <td><%= link_to "Mark as Read", "invitations/#{invite.id}/read"  %></td>
+      <td><%= link_to "Reply", "invitations/#{invite.id}"  %></td>    
+    </tr>
+  </tbody>
   <% end %>
-</div>
+  <% end %>
+</table>
+
+<h2>Read Mail</h2>
+<table>
+  <thead>
+    <tr>
+      <th width="100">From</th>
+      <th width="500">Message</th>
+ 	  <th width="150">Sent</th>
+      <th width="110">Mark as Read</th>
+      <th width="60">Reply</th>
+    </tr>
+  </thead>
+  	<% if current_user.id == @user.id %>
+  	<% @user.invitations_received.where(read: true).each do |invite| %>
+  <tbody>
+    <tr>
+      <td><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %></td>
+      <td><%= simple_format invite.content %></td>
+      <td><%= invite.created_at.to_formatted_s(:long) %></td>
+      <td><%= link_to "Mark as Unread", "invitations/#{invite.id}/read" %></td>
+      <td><%= link_to "Reply", "invitations/#{invite.id}" %></td>    
+    </tr>
+  </tbody>
+  <% end %>
+  <% end %>
+</table>
