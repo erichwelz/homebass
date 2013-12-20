@@ -1,5 +1,6 @@
 <div class="row">
   <div class="large-6 columns">
+    <h4><%= link_to "Back to Inbox", user_invitations_path %></h4></br>
     <span class="secondary radius label">From: </span><%= link_to "#{@invitation.user.full_name}", "/users/#{@invitation.user_id}" %>
     <span class="secondary radius label">Sent: </span><%= @invitation.created_at.to_formatted_s(:long) %>
   	<p>

@@ -1,27 +1,27 @@
 <div class="row">
   <% if current_user.id == @user.id %>
     <div class="invitations_unread">
-	  <h3>Unread Mail</h3>
+	  <h2>Unread Mail</h2>
 	    <% @user.invitations_received.where(read: false).each do |invite| %>
 		  <span class="secondary radius label">From:  </span><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %>
-		     <span class="secondary radius label">Sent:  </span><%= invite.created_at.to_formatted_s(:long) %><br><br> 
+		     <span class="secondary radius label">Sent:  </span><%= invite.created_at.to_formatted_s(:long) %> 
 			  	   <%= link_to "Mark as Read", "invitations/#{invite.id}/read"  %> |
 			  	   <%= link_to "Reply", "invitations/#{invite.id}"  %>
 		  </p>
-		  <span class="secondary radius label">Message: </span><p><%= simple_format invite.content %></p>             
+<p><%= simple_format invite.content %></p>             
 		  <hr />
 	    <% end %>
     </div>
 
     <div class="invitations_read">
-	  <h3>Read Mail</h3>
+	  <h2>Read Mail</h2>
 	  <% @user.invitations_received.where(read: true).each do |invite| %>
 	    <p><span class="secondary radius label">From: </span><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %>	 
-	       <span class="secondary radius label">Sent: </span><%= invite.created_at.to_formatted_s(:long) %><br><br> 
+	       <span class="secondary radius label">Sent: </span><%= invite.created_at.to_formatted_s(:long) %>
 			     <%= link_to "Mark as Unread", "invitations/#{invite.id}/read" %> |
 	    		 <%= link_to "Reply", "invitations/#{invite.id}" %>
 	    </p>
-	    <span class="secondary radius label">Message: </span><p><%= simple_format invite.content %></p>             
+<p><%= simple_format invite.content %></p>             
 	    <hr />
       <% end %>
     </div>
