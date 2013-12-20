@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   def full_name
     full_name = first_name.capitalize + " " + last_name.capitalize 
   end     
-
+  
   def smart_add_url_protocol
   unless self.personal_url[/\Ahttp:\/\//] || self.personal_url[/\Ahttps:\/\//]
     self.personal_url = "http://#{self.personal_url}"
