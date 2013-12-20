@@ -23,7 +23,7 @@
             <ul class="right">
               <li>
                 <%= form_tag users_path, :method => 'get' do %>
-                <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search by City" %>
               </li>
               <li>
                 <% submit_tag "Search", :name => nil %>

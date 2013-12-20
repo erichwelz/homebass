@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   # end
   def self.search(search)
     if search
-      where 'bio LIKE ?', "%#{search}%"
+      where 'city ILIKE ?', "%#{search}%"
     else
       scoped
     end
