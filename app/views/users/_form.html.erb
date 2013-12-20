@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, html: { multipart: true } do |f| %>
   <% if @user.errors.any? %>
  
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,53 +11,57 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label :email %><br>
       <%= f.text_field :email %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label :password %><br>
       <%= f.password_field :password %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "Password confirmation:" %><br>
       <%= f.password_field :password_confirmation %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "First Name:" %><br>
       <%= f.text_field :first_name %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "Last Name:"  %><br>
       <%= f.text_field :last_name %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "City: " %><br>
       <%= f.text_field :city %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "Postal Code:"  %><br>
       <%= f.text_field :postal_code %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "Biography : (You can fill me in later) " %><br>
       <%= f.text_area :bio %>
     </div> 
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "What are you looking for? (You can fill me in later) " %><br>
       <%= f.text_area :looking_for %>
     </div> 
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "Genres (separated by commas)" %><br>
       <%= f.text_field :genre_list %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "Instruments (separated by commas)" %><br>
       <%= f.text_field :instrument_list %>
     </div>
-    <div class="large-6 colums">
+    <div class="large-6 columns">
       <%= f.label "Link to Recordings, Band Site etc."  %><br>
       <%= f.text_field :personal_url %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.label :avatar  %>
+      <%= f.file_field :avatar %>
     </div>
     <div class="actions">
       <%= f.submit %>

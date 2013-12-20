@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219213749) do
+ActiveRecord::Schema.define(version: 20131220020409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,10 @@ ActiveRecord::Schema.define(version: 20131219213749) do
     t.datetime "reset_password_email_sent_at"
     t.text     "looking_for"
     t.string   "personal_url"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree

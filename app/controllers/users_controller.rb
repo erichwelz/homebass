@@ -84,6 +84,7 @@ class UsersController < ApplicationController
                                  :latitude, 
                                  :longitude,
                                  :looking_for,
-                                 :personal_url)
+                                 :personal_url,
+                                 :avatar)
   end
 end

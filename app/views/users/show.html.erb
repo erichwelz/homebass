@@ -2,6 +2,7 @@
   <div class="large-6 columns">
     <h4><%= @user.full_name %></h4>   
     <p>
+      <%= image_tag @user.avatar.url(:medium) %><br>
       City: <%= @user.city %><br>
       Genres: <%= @user.genre_list %><br>
       Instruments: <%= @user.instrument_list %><br>

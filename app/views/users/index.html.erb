@@ -3,7 +3,7 @@
   <div class="medium-9 colmuns">
     <% @users.each do |user| %>
       <h4><%= link_to "#{user.full_name}(#{user.target_references.sum(:feedback_value)})", user_path(user.id) %></h4>
-        <p>
+        <p><%= image_tag user.avatar.url(:thumb) %><br>
            Genres: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
            Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
         <% if current_user %>

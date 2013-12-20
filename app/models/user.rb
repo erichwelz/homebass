@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   has_many :invitations
   has_many :invitations_received, class_name: "Invitation", foreign_key: :recipient_id
 
+  has_attached_file :avatar, :styles => { 
+                    :medium => "300x300>", 
+                    :thumb => "100x100>" }, :default_url => "/images/:attachment/missing_:style.png"
+
   before_validation :smart_add_url_protocol
   before_validation :upcase_postal
   after_validation :geocode, :if => :postal_code_changed?
