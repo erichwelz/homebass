@@ -1,20 +1,15 @@
 <div class="large-6 columns">
-  <%= form_for([@user, @invitation]) do |f| %>
-    <% if @user.errors.any? %>
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-        <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <%= form_for([@user, @invitation], remote: true ) do |f| %>
+  <div id="message-form-errors" > 
+    <%= render :partial => "/users/message_form_errors" %>
+  </div>
 
     <%= f.hidden_field :recipient_id %>
     <div class="field">
       <%= f.label "Contact this user here!" %><br>
       <%= f.text_area :content %>
     </div>
+    
     <div class="actions">
       <%= f.submit "Send" %>
     </div>

@@ -29,12 +29,15 @@ class InvitationsController < ApplicationController
   def create
 	  @invitation = @user.invitations.build(invitation_params)
 	  @invitation.user_id = current_user.id
-
-  	if @invitation.save
-	    redirect_to user_path(@user)
-	  else
-	    redirect_to user_path(@user)
-	  end
+    respond_to do |format|
+    	if @invitation.save
+  	    format.html {redirect_to user_path(@user), notice: 'Message Sent'}
+        format.js{}
+  	  else
+  	    format.html { redirect_to user_path(@user), notice: 'Message can not be blank' }
+        format.js{}
+  	  end
+    end
   end
 
   private
