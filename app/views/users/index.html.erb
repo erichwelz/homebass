@@ -3,7 +3,6 @@
     <p>&nbsp</p>
   </div>
   <div class="large-8  columns">
-    <div class="container">
         <h3>Canada's #1 Source for Non-Flakey Musicians!</h3><br/>
       <p> 
         Find musicians who play the instruments and genres you're interested in<br/>
@@ -13,15 +12,15 @@
       <% unless current_user %>
          <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
       <% end %>
-    </div>
   </div>
   <div class="large-2 columns">
     <p>&nbsp</p>
   </div> 
 </div>
+<br/>
+<br/>
 
 <div class="row">
-  <div class="container">
     <ul class="small-block-grid-3">  
       <h3>Listing Musicians</h3>  
       <% @users.each do |user| %>
@@ -41,5 +40,4 @@
       <% end %>
     </ul>
     <%= paginate @users %>
-  </div>
 </div>
