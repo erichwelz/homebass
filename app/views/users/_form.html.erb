@@ -43,13 +43,13 @@
       <%= f.text_field :city %>
     </div>
     <div class="large-6 columns">
-      <%= f.label "Postal Code:"  %><br>
+      <%= f.label "Postal Code: (used to find nearby musicians)"  %><br>
       <%= f.text_field :postal_code %>
     </div>
 </div>
 <div class="row">
     <div class="large-6 columns">
-      <%= f.label "Biography : (You can fill me in later) " %><br>
+      <%= f.label "Biography: (You can fill me in later) " %><br>
       <%= f.text_area :bio %>
     </div> 
     <div class="large-6 columns">
@@ -74,7 +74,7 @@
     </div>
     <div class="large-6 columns">
       <%= f.label :avatar  %>
-      <%= f.file_field :avatar, :class => "tiny radius button" %>
+      <%= f.file_field :avatar %>
     </div>
 </div>
 <div class="row">    
