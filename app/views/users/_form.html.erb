@@ -13,70 +13,71 @@
 </div>
 <div class="row">
     <div class="large-6 columns">
-      <%= f.label :email %><br>
+      <%= f.label :email %>
       <%= f.text_field :email %>
     </div>
 </div>
 <div class="row">
     <div class="large-6 columns">
-      <%= f.label "First Name:" %><br>
+      <%= f.label :first_name, "First Name:" %>
       <%= f.text_field :first_name %>
     </div>
     <div class="large-6 columns">
-      <%= f.label "Last Name:"  %><br>
+      <%= f.label :last_name, "Last Name:"  %>
       <%= f.text_field :last_name %>
     </div> 
 </div>
 <div class="row">
     <div class="large-6 columns">
-      <%= f.label :password %><br>
+      <%= f.label :password %>
       <%= f.password_field :password %>
     </div>
     <div class="large-6 columns">
-      <%= f.label "Password confirmation:" %><br>
+      <%= f.label :password_confirmation, "Password Confirmation" %>
       <%= f.password_field :password_confirmation %>
     </div>
 </div>
 <div class="row">
     <div class="large-6 columns">
-      <%= f.label "City: " %><br>
+      <%= f.label "City: " %>
       <%= f.text_field :city %>
     </div>
     <div class="large-6 columns">
-      <%= f.label "Postal Code: (used to find nearby musicians)"  %><br>
+      <%= f.label :postal_code, "Postal Code: (used to find nearby musicians)"  %>
       <%= f.text_field :postal_code %>
     </div>
 </div>
 <div class="row">
     <div class="large-6 columns">
-      <%= f.label "Biography: (You can fill me in later) " %><br>
+      <%= f.label "Biography: (You can fill me in later) " %>
       <%= f.text_area :bio %>
     </div> 
     <div class="large-6 columns">
-      <%= f.label "What are you looking for? (You can fill me in later) " %><br>
+      <%= f.label "What are you looking for? (You can fill me in later) " %>
       <%= f.text_area :looking_for %>
     </div>
 </div> 
 <div class="row">
     <div class="large-6 columns">
-      <%= f.label "Genres (separated by commas)" %><br>
+      <%= f.label "Genres (separated by commas)" %>
       <%= f.text_field :genre_list %>
     </div>
     <div class="large-6 columns">
-      <%= f.label "Instruments (separated by commas)" %><br>
+      <%= f.label "Instruments (separated by commas)" %>
       <%= f.text_field :instrument_list %>
     </div>
 </div>
 <div class="row">
     <div class="large-6 columns">
-      <%= f.label "Link to Recordings, Band Site etc."  %><br>
+      <%= f.label "Link to Recordings, Band Site etc."  %>
       <%= f.text_field :personal_url %>
     </div>
     <div class="large-6 columns">
-      <%= f.label :avatar  %>
-      <%= f.file_field :avatar %>
+        <%= f.label "Choose a Photo" %>
+        <%= f.file_field :avatar %>
     </div>
 </div>
+
 <div class="row">    
     <div class="large-6 columns">
       <%= f.submit "Save", :class => "tiny radius button" %>
