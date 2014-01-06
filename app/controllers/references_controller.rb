@@ -35,7 +35,8 @@ class ReferencesController < ApplicationController
 
   def index
     @user = current_user
-    @my_refs = Reference.where(source_id: current_user.id ) 
+
+    @my_refs = Reference.where(source_id: current_user.id) 
   end
 
   def destroy
