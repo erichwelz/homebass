@@ -6,6 +6,7 @@ source 'https://rubygems.org'
   gem 'geocoder'
   gem 'sorcery'
   gem 'paperclip'
+  gem 'aws-sdk' #required for Amazon S3 paperclip
   gem "kaminari"
   gem 'foundation-rails'
   gem 'acts-as-taggable-on'
