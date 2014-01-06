@@ -1,37 +1,45 @@
 <div class="row">
-  <% unless current_user %>
-  <div class ="large-2 columns">
-  <p>&nbsp</p>
+  <div class="large-2 columns">
+    <p>&nbsp</p>
   </div>
-  <div class="large-8 columns">
+  <div class="large-8  columns">
     <div class="container">
-        <h4>Join Canada's #1 source for non-flakey musicians</h4><br/>
+        <h3>Canada's #1 Source for Non-Flakey Musicians!</h3><br/>
       <p> 
         Find musicians who play the instruments and genres you're interested in<br/>
         Share your good and not-so-good experiences with other musicians<br/>
         Start contacting people near you today!<br/>
       </p>
+      <% unless current_user %>
+         <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
+      <% end %>
     </div>
   </div>
-  <% end %> 
-<div>
+  <div class="large-2 columns">
+    <p>&nbsp</p>
+  </div> 
+</div>
 
 <div class="row">
-  <div class="large-6 colmuns">
-  <h2>Listing Musicians</h2>
-    <% @users.each do |user| %>
-      <h4><%= link_to "#{user.full_name}(#{user.target_references.sum(:feedback_value)})", user_path(user.id) %></h4>
-        <p><%=link_to image_tag(user.avatar.url(:thumb)), user_path(user.id) %><br>
-           Genres: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
-           Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
-        <% if current_user %>
-           Distance from you: <%= user.distance_to(current_user, :km).round(1) %> KM<br>
-        <% end %>
-           City: <%= user.city %><br>
-           Biography: <%= truncate(user.bio, length: 100) %><br>
-           Looking for: <%= truncate(user.looking_for, length: 100) %>
-        </p>
-    <% end %>
+  <div class="container">
+    <ul class="small-block-grid-3">  
+      <h3>Listing Musicians</h3>  
+      <% @users.each do |user| %>
+        <li>
+        <h4><%= link_to "#{user.full_name}(#{user.target_references.sum(:feedback_value)})", user_path(user.id) %></h4>
+          <p><%=link_to image_tag(user.avatar.url(:thumb)), user_path(user.id) %><br>
+             Genres: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
+             Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
+          <% if current_user %>
+             Distance from you: <%= user.distance_to(current_user, :km).round(1) %> KM<br>
+          <% end %>
+             City: <%= user.city %><br>
+             Biography: <%= truncate(user.bio, length: 100) %><br>
+             Looking for: <%= truncate(user.looking_for, length: 100) %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+    <%= paginate @users %>
   </div>
-  <%= paginate @users %>
 </div>

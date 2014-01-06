@@ -74,12 +74,12 @@
     </div>
     <div class="large-6 columns">
       <%= f.label :avatar  %>
-      <%= f.file_field :avatar %>
+      <%= f.file_field :avatar, :class => "tiny radius button" %>
     </div>
 </div>
 <div class="row">    
     <div class="large-6 columns">
-      <%= f.submit %>
+      <%= f.submit "Save", :class => "tiny radius button" %>
     </div>
 </div>
 <% end %>

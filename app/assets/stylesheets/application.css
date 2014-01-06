@@ -33,3 +33,6 @@ html body{
 	border: 1px solid #a8bbe5;
 	border-radius: 5px;
 }
+li{
+	list-style-type: none;
+}

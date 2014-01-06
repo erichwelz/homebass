@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def index
      if params[:tag] 
-        @users = User.page(params[:page]).per(10).search(params[:search]).tagged_with(params[:tag])
+        @users = User.page(params[:page]).per(9).search(params[:search]).tagged_with(params[:tag])
      else
-        @users = User.page(params[:page]).per(10).search(params[:search])
+        @users = User.page(params[:page]).per(9).search(params[:search])
      end
   end
 
