@@ -5,7 +5,7 @@
 
   <%= f.hidden_field :recipient_id %>
   <div class="field">
-    <%= f.label "Contact this user here!" %><br>
+    <h4>Send <%= @user.first_name.capitalize %> a Message!</h4><br>
     <%= f.text_area :content %>
   </div>
     

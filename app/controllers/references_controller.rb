@@ -27,7 +27,7 @@ class ReferencesController < ApplicationController
   def update
     @reference = Reference.find(params[:id])
       if @reference.update(reference_params)
-        redirect_to user_references_path
+         redirect_to user_references_path
       else
         render action: 'edit', notice: 'Errors updating' 
     end
@@ -35,7 +35,7 @@ class ReferencesController < ApplicationController
 
   def index
     @user = current_user
-    @my_refs = Reference.where(:source_id == current_user.id) 
+    @my_refs = Reference.where(source_id: current_user.id ) 
   end
 
   def destroy

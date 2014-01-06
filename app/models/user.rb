@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
       self.personal_url = "http://#{self.personal_url}"
     end
   end
+
   def self.search(search)
     if search
       where 'city ILIKE ?', "%#{search}%"

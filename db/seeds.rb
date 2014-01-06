@@ -39,9 +39,9 @@ user2 = User.create!({
 )
 
 user3 = User.create!({
-  email: "nothing@gmail.com",
-  first_name: "nothing",
-  last_name: "project",
+  email: "guy@gmail.com",
+  first_name: "generic",
+  last_name: "name",
   city: "Toronto",
   postal_code: "M4K 2L7",
   password: "password",
@@ -54,9 +54,9 @@ user3 = User.create!({
 
 50.times do |i|
   User.create!({
-  email: "nothing#{i}@gmail.com",
-  first_name: "nothing#{i}",
-  last_name: "project",
+  email: "person#{i}@gmail.com",
+  first_name: "guy#{i}",
+  last_name: "face",
   city: "Toronto",
   postal_code: postal_arr.sample,
   password: "password",
