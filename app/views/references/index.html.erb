@@ -1,19 +1,21 @@
 <div class="row">    
-  <% @my_refs.each do |ref| %>
-    <% if ref.target %>
-      <h4>Reference Left For: <%= ref.target.full_name %></h4> 
+  <ul class="small-block-grid-2">
+    <% @my_refs.each do |ref| %>
+      <li>
+        <% if ref.target %>
+          <h4>Reference Left For: <%= ref.target.full_name %></h4> 
+        <% end %>
+        <p>
+          Feedback: <%= ref.feedback_textifier %><br>
+          Content: <%= ref.comment %><br>
+          Jammed: <%= ref.check("jammed") %>
+          Performed: <%= ref.check("performed") %>
+          Recorded: <%= ref.check("recorded") %><br>
+          Last Updated: <%= ref.updated_at %><br>
+          <%= link_to "Update This Reference","references/#{ref.id}/edit" %><br>
+        </p>
+      </li>
     <% end %>
-    <p>
-      Feedback: <%= ref.feedback_textifier %><br>
-      Content: <%= ref.comment %><br>
-      Jammed: <%= ref.check("jammed") %>
-      Performed: <%= ref.check("performed") %>
-      Recorded: <%= ref.check("recorded") %><br>
-      Last Updated: <%= ref.updated_at %><br>
-      <%= link_to "Update This Reference","references/#{ref.id}/edit" %><br>
-    </p>
-    <hr />
-  <% end %>
+  </ul>
 </div>
-
   
