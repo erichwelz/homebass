@@ -62,17 +62,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def search
-    @users = User.search do
-      keywords params[:query]
-    end.results
-
-    respond_to do |format|
-      format.html { render :action =>  "index" }
-      format.xml  { render :xml => @users }
-    end
-  end
-
   private
   def set_user
     @user = User.find(params[:id])
@@ -94,7 +83,6 @@ class UsersController < ApplicationController
                                  :longitude,
                                  :looking_for,
                                  :personal_url,
-                                 :avatar,
-                                 :query)
+                                 :avatar)
   end
 end

@@ -9,7 +9,6 @@ source 'https://rubygems.org'
   gem "kaminari"
   gem 'foundation-rails'
 
-  gem 'sunspot_rails'
   gem 'geocoder'
   gem 'acts-as-taggable-on'
 

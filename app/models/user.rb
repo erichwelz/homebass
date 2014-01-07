@@ -51,8 +51,4 @@ class User < ActiveRecord::Base
       self.personal_url = "http://#{self.personal_url}"
     end
   end
-
-  searchable do
-    text :looking_for, :bio, :city, :first_name, :last_name
-  end
 end
