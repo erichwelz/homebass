@@ -1,10 +1,10 @@
 <% if current_user %>
 
- <h4>Add a Reference for <%= @user.first_name.capitalize %></h4>
+<h4>Add a Reference for <%= @user.first_name.capitalize %></h4>
  
   <%= form_for([@user, @reference], remote: true ) do |f| %>
     <div id="reference-form-errors" > 
-       <%= render :partial => "/users/reference_form_errors" %>
+      <%= render :partial => "/users/reference_form_errors" %>
     </div>
 
     <div class="field">
@@ -32,7 +32,6 @@
     </div>              
     <div class="actions">
       <%= f.submit "Leave Reference", :class => "button radius tiny" %>
-    </div>
     </div>
   <% end %>
 <% else %>

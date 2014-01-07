@@ -3,15 +3,15 @@
     <p>&nbsp</p>
   </div>
   <div class="large-8  columns">
-        <h3>Canada's #1 Source for Non-Flakey Musicians!</h3><br/>
-      <p> 
-        Find musicians who play the instruments and genres you're interested in<br/>
-        Share your good and not-so-good experiences with other musicians<br/>
-        Start contacting people near you today!<br/>
-      </p>
-      <% unless current_user %>
-         <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
-      <% end %>
+    <h3>Canada's #1 Source for Non-Flakey Musicians!</h3><br/>
+    <p> 
+      Find musicians who play the instruments and genres you're interested in<br/>
+      Share your good and not-so-good experiences with other musicians<br/>
+      Start contacting people near you today!<br/>
+    </p>
+    <% unless current_user %>
+       <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
+    <% end %>
   </div>
   <div class="large-2 columns">
     <p>&nbsp</p>

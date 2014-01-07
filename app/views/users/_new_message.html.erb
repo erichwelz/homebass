@@ -4,12 +4,10 @@
   </div>
 
   <%= f.hidden_field :recipient_id %>
-  <div class="field">
-    <h4>Contact <%= @user.first_name.capitalize %></h4>
-    <%= f.text_area :content %>
-  </div>
-    
-  <div class="actions">
-    <%= f.submit "Send Message", :class => "button radius tiny" %>
-  </div>
+  
+  <h4>Contact <%= @user.first_name.capitalize %></h4>
+
+  <%= f.text_area :content %>
+
+  <%= f.submit "Send Message", :class => "button radius tiny" %>
 <% end %>

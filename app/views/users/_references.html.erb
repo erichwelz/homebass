@@ -1,9 +1,10 @@
-<div class="row">
-  <% if @user.target_references.count >= 1 %>
-    <h4>References left for <%= @user.first_name.capitalize %></h4>
-  <% end %>
-
-  <% @user.target_references.each do |reference| %>
+<hr />
+<% if @user.target_references.count >= 1 %>
+  <h4>References left for <%= @user.first_name.capitalize %></h4>
+<% end %>
+<hr/>
+<% @user.target_references.each do |reference| %>
+  <li>
     <% unless reference.new_record? %>
       <div class="<%= reference.feedback_textifier %>">Feedback: <%= reference.feedback_textifier %>
       </div>
@@ -13,8 +14,8 @@
       Recorded?  <%= reference.check("recorded") %><br>
         <% if reference.source != nil %>
           <em>Left By: <%=link_to reference.source.full_name, "/users/#{reference.source.id}" %></em><br>
-          Date: <%= reference.created_at.to_formatted_s(:long) %><hr>
+          Date: <%= reference.created_at.to_formatted_s(:long) %>
         <% end %>
-    <% end %>
+    </li>
   <% end %>
-</div>
+<% end %>
