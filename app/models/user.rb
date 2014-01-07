@@ -53,7 +53,6 @@ class User < ActiveRecord::Base
   end
 
   searchable do
-    string :first_name, :last_name, :city
-    text :looking_for, :bio
+    text :looking_for, :bio, :city, :first_name, :last_name
   end
 end
