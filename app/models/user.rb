@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:first_name, :last_name, :city, :bio, :looking_for]
+
   has_many :target_references, class_name: "Reference", foreign_key: :target_id
   has_many :source_references, class_name: "Reference", foreign_key: :source_id
 

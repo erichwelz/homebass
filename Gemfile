@@ -9,6 +9,9 @@ source 'https://rubygems.org'
   gem "kaminari"
   gem 'foundation-rails'
 
+  gem 'pg_search' #full-text search for postgres
+
+
   gem 'geocoder'
   gem 'acts-as-taggable-on'
 
