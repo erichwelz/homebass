@@ -3,12 +3,14 @@ source 'https://rubygems.org'
   gem 'pg'
   gem 'thin'
   gem 'faker' 
-  gem 'geocoder'
   gem 'sorcery'
   gem 'paperclip'
   gem 'aws-sdk' #required for Amazon S3 paperclip
   gem "kaminari"
   gem 'foundation-rails'
+
+  gem 'sunspot_rails'
+  gem 'geocoder'
   gem 'acts-as-taggable-on'
 
   gem 'rails', '4.0.2'
@@ -30,6 +32,7 @@ group :development, :test do
   gem 'debugger'
   gem 'jazz_hands'
   gem 'quiet_assets'
+  gem 'sunspot_solr'
 end
 
 group :development do

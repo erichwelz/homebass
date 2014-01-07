@@ -52,11 +52,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
-    if search
-      where 'city ILIKE ?', "%#{search}%"
-    else
-      scoped
-    end
+  searchable do
+    string :first_name
+    string :last_name
+    string :city
+    text :looking_for
+    text :bio
   end
 end

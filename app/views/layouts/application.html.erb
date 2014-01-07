@@ -22,11 +22,11 @@
         <section class="top-bar-section">
             <ul class="right">
               <li>
-                <%= form_tag users_path, :method => 'get' do %>
-                <%= text_field_tag :search, params[:search], placeholder: "Search by City" %>
+                <%= form_tag search_users_path, :method => :get do %>
+                <%= text_field_tag :query, params[:query] %>
               </li>
               <li>
-                <% submit_tag "Search", :name => nil %>
+                <% submit_tag "Search!" %>
                 <% end %>
               </li>
             <% if current_user %>

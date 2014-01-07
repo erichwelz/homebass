@@ -7,6 +7,9 @@ Musicianfinder::Application.routes.draw do
   resources :users do
     resources :references
     resources :invitations
+    collection do 
+      get :search
+    end
   end
 
   get 'tags/:tag', to: 'users#index', as: :tag

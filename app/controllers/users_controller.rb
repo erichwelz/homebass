@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def index
      if params[:tag] 
-        @users = User.page(params[:page]).per(9).search(params[:search]).tagged_with(params[:tag])
+        @users = User.page(params[:page]).per(9).tagged_with(params[:tag])
      else
-        @users = User.page(params[:page]).per(9).search(params[:search])
+        @users = User.page(params[:page]).per(9)
      end
   end
 
@@ -62,6 +62,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.search do
+      keywords params[:query]
+    end.results
+
+    respond_to do |format|
+      format.html { render :action =>  "index" }
+      format.xml  { render :xml => @users }
+    end
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
@@ -83,6 +94,7 @@ class UsersController < ApplicationController
                                  :longitude,
                                  :looking_for,
                                  :personal_url,
-                                 :avatar)
+                                 :avatar,
+                                 :query)
   end
 end
