@@ -7,10 +7,8 @@
       <%= render :partial => "/users/reference_form_errors" %>
     </div>
 
-    <div class="field">
-      <%= f.text_area :comment %>
-    </div>
-    <div class="field">
+    <%= f.text_area :comment %>
+    <div>
       <%= f.radio_button :feedback_value, 1 %>
       <%= f.label :feedback_value, "Positive" %>
       <%= f.radio_button :feedback_value, 0 %>
@@ -18,21 +16,20 @@
       <%= f.radio_button :feedback_value, -1 %>
       <%= f.label :feedback_value, "Negative" %>
     </div>
-    <div class="field">
+    <div>
       <%= f.check_box :jammed %>
       <%= f.label :jammed, "We've jammed together" %>
     </div>
-    <div class="field">
+    <div>
       <%= f.check_box :performed %>
       <%= f.label :performed, "We've performed together" %>
-    </div>  
-    <div class="field">
+    </div>
+    <div>
       <%= f.check_box :recorded %>
       <%= f.label :recorded, "We've recorded together" %>
-    </div>              
-    <div class="actions">
-      <%= f.submit "Leave Reference", :class => "button radius tiny" %>
     </div>
+  
+    <%= f.submit "Leave Reference", :class => "button radius tiny" %>
   <% end %>
 <% else %>
   <p>Please <%= link_to 'log in', new_session_path %> to leave a reference.</p>

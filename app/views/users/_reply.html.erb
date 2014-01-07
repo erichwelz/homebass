@@ -7,6 +7,7 @@
   </div>
 
     <%= f.hidden_field :recipient_id, :value => "#{@invitation.user_id}" %>
+
     <div class="large-6 columns">
       <%= f.label "Contact this user here!" %>
       <%= f.text_area :content %>
