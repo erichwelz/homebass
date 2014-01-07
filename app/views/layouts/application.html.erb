@@ -21,8 +21,12 @@
 
         <section class="top-bar-section">
             <ul class="right">
+             <li>
+                <%= form_tag users_path, :method => :get do %>
+                <%= text_field_tag :query, params[:query], placeholder: "Search" %>
+              </li>
               <li>
-
+                <% end %>
               </li>
             <% if current_user %>
               <li>

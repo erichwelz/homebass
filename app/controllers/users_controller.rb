@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create,] 
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
+  # def index
+  #   @users = PgSearch.multisearch(params[:query])
+  # end
+
   def index
      if params[:tag] 
         @users = User.page(params[:page]).per(9).tagged_with(params[:tag])

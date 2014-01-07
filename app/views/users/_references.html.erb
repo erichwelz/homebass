@@ -6,7 +6,8 @@
 <% @user.target_references.each do |reference| %>
   <li>
     <% unless reference.new_record? %>
-      Feedback: <%= reference.feedback_textifier %><br> 
+      <div class="<%= reference.feedback_textifier %>">Feedback: <%= reference.feedback_textifier %>
+      </div>
       Comment: <%= reference.comment %><br>
       Jammed Together? <%= reference.check("jammed") %><br>
       Performed?  <%= reference.check("performed")  %><br>

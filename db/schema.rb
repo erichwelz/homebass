@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131220020409) do
+ActiveRecord::Schema.define(version: 20140107194415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 20131220020409) do
 
   add_index "messages", ["ancestry"], name: "index_messages_on_ancestry", using: :btree
   add_index "messages", ["sent_messageable_id", "received_messageable_id"], name: "acts_as_messageable_ids", using: :btree
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "references", force: true do |t|
     t.text     "comment"
