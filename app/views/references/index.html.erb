@@ -3,7 +3,7 @@
     <% @my_refs.each do |ref| %>
       <li>
         <% if ref.target %>
-          <h4>Reference Left For: <%= ref.target.full_name %></h4> 
+          <h4>Reference Left For: <%= link_to ref.target.full_name, "/users/#{ref.target.id}" %></h4> 
         <% end %>
         <p>
           Feedback: <%= ref.feedback_textifier %><br>
