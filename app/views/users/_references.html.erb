@@ -5,14 +5,14 @@
 
   <% @user.target_references.each do |reference| %>
     <% unless reference.new_record? %>
-      Feedback Value: <%= reference.feedback_textifier %><br> 
+      Feedback: <%= reference.feedback_textifier %><br> 
       Comment: <%= reference.comment %><br>
-      Jammed Together?  <%= reference.check("jammed") %><br>
+      Jammed Together? <%= reference.check("jammed") %><br>
       Performed?  <%= reference.check("performed")  %><br>
       Recorded?  <%= reference.check("recorded") %><br>
         <% if reference.source != nil %>
-          <em>Left By: <%= reference.source.full_name %></em><br>
-          Reference Created on: <%= reference.created_at.to_formatted_s(:long) %><hr>
+          <em>Left By: <%=link_to reference.source.full_name, "/users/#{reference.source.id}" %></em><br>
+          Date: <%= reference.created_at.to_formatted_s(:long) %><hr>
         <% end %>
     <% end %>
   <% end %>
