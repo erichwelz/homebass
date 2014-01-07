@@ -1,13 +1,13 @@
 <div class="row">
-  <div class="large-6 columns">
+  <div class="large-9 columns">
     <h3><%= @user.full_name %></h3>   
     <p>
       <%= image_tag @user.avatar.url(:medium) %><br>
       City: <%= @user.city %><br>
-      Genres: <%= @user.genre_list %><br>
       Instruments: <%= @user.instrument_list %><br>
-      Biography: <%= @user.bio %><br>
-      Looking For: <%= @user.looking_for %><br>
+      Prefered Genres: <%= @user.genre_list %><br><br>
+      Biography: <%= @user.bio %><br><br>
+      Looking For: <%= @user.looking_for %><br><br>
       <a href=<%="#{@user.personal_url}"%>>My Website</a><br>
     </p>
     <hr />
@@ -21,25 +21,18 @@
 </div>
 
 <div class="row">
-  <div class="large-6 columns">
-    <div id="new-message">
-      <%= render "new_message" %>
-    </div>
-  </div>
-</div>
-
-<div class="row">  
-  <div class="large-6 columns">
-    <div id="new-reference">  
+  <ul class="small-block-grid-2">  
+    <li id="new-reference">  
       <%= render "new_reference" %>
-    </div>
-  </div> 
+    </li> 
+    <li id="new-message">
+      <%= render "new_message" %>
+    </li>
+  </ul>
 </div>
 
 <div class="row">
-  <div class="large-6 columns">
-    <div id="references">
-      <%= render "references" %>
-    </div>
-  </div>
+  <ul class="small-block-grid-3" id="references">
+        <%= render "references" %>
+  </ul>
 </div>
