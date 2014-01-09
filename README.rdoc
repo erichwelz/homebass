@@ -1,6 +1,6 @@
 MusicianFinder/Homebass
 
-Bitmaker Labs Final Project
+Bitmaker Labs Final Project - Deployed on Heroku using Amazon S3 for assets: musicianfinder.herokuapp.com
 
 Contributors
 
