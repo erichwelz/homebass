@@ -9,6 +9,7 @@ David Merritt - davidmerrit6@gmail.com
 Erich Welz - erich@welz.ca
 
 FUNCTIONALITY
+
 This project allows you to find and message musicians near you for collaboration
 
 Users can leave other users references. 
