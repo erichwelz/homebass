@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="large-9 columns">
+  <div class="large-9 columns medium-9 columns">
     <h3><%= @user.full_name %></h3>   
     <p>
       <%= image_tag @user.avatar.url(:medium) %><br>
@@ -12,7 +12,7 @@
     </p>
     <hr />
   </div>
-  <div class="large-3 columns">
+  <div class="large-3 columns medium-9 columns">
     <div id="feedback-rating">
       <h3>Feedback Rating</h3>
       <%= render "feedback_rating" %>
@@ -21,18 +21,22 @@
 </div>
 
 <div class="row">
-  <ul class="small-block-grid-2">  
-    <li id="new-reference">  
-      <%= render "new_reference" %>
-    </li> 
+  <ul class="large-block-grid-2 medium-block-grid-1 small-block-grid-1">  
     <li id="new-message">
       <%= render "new_message" %>
     </li>
+    <li id="new-reference">  
+      <%= render "new_reference" %>
+    </li> 
   </ul>
 </div>
 
 <div class="row">
-  <ul class="small-block-grid-3" id="references">
+  <% if @user.target_references.count >= 1 %>
+  <h4>References left for <%= @user.first_name.capitalize %></h4>
+<% end %>
+<hr/>
+  <ul class="large-block-grid-3 medium-block-grid-2 small-block-grid-1" id="references">
         <%= render "references" %>
   </ul>
 </div>
