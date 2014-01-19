@@ -2,17 +2,26 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create,] 
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
-  # def index
-  #   @users = PgSearch.multisearch(params[:query])
-  # end
-
   def index
-     if params[:tag] 
-        @users = User.page(params[:page]).per(9).tagged_with(params[:tag])
-     else
-        @users = User.page(params[:page]).per(9)
-     end
+    if params[:tag]
+    @users = User.tagged_with(params[:tag])
+    elsif params[:query] != " " && params[:query] != ""
+      search = PgSearch.multisearch(params[:query])
+      @users = search.map(&:searchable)
+    elsif current_user
+      @users = current_user.nearbys
+    else
+      @users = User.all
+    end
   end
+
+  # def index
+  #    if params[:tag] 
+  #       @users = User.page(params[:page]).per(9).tagged_with(params[:tag])
+  #    else
+  #       @users = User.page(params[:page]).per(9)
+  #    end
+  # end
 
   def show
     @user = User.find(params[:id])
