@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="large-2 columns">
+  <div class="large-2 columns small-0 columns">
     <p>&nbsp</p>
   </div>
-  <div class="large-8  columns">
+  <div class="large-8 columns small-12 columns">
     <h3>Canada's #1 Source for Non-Flakey Musicians!</h3><br/>
     <p> 
       Find musicians who play the instruments and genres you're interested in<br/>
@@ -13,7 +13,7 @@
        <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
     <% end %>
   </div>
-  <div class="large-2 columns">
+  <div class="large-2 columns small-0 columns">
     <p>&nbsp</p>
   </div> 
 </div>
@@ -21,8 +21,8 @@
 <br/>
 
 <div class="row">
-    <ul class="small-block-grid-3">  
-      <h3>Listing Musicians</h3>  
+  <h3>Listing Musicians</h3>
+    <ul class="large-block-grid-3 medium-block-grid-2 small-block-grid-1">  
       <% @users.each do |user| %>
         <li>
         <h4><%= link_to "#{user.full_name}(#{user.target_references.sum(:feedback_value)})", user_path(user.id) %></h4>

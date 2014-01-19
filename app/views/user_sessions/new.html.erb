@@ -1,5 +1,20 @@
-<div class="row">
-	<h1>Login</h1>
-</div>
-<br>
-<%= render 'form' %>
+<%= form_tag user_sessions_path, :method => :post do %>
+  <div class="row">
+    <div class="large-3 columns medium-2 columns small-0 columns">
+      <p>&nbsp</p>
+    </div>
+    <div class="large-6 columns medium-8 columns small-12 columns">
+      <h1>Login</h1>
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    
+      <%= submit_tag "Login", :class => "tiny radius button" %>
+    </div>
+        <div class="large-3 columns medium-2 columns small-0 columns">
+      <p>&nbsp</p>
+      </div>
+  </div>
+<% end %>
