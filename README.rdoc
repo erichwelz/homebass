@@ -1,28 +1,23 @@
-== README
+MusicianFinder/Homebass
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bitmaker Labs Final Project - Deployed on Heroku using Amazon S3 for assets: musicianfinder.herokuapp.com
 
-Things you may want to cover:
+Contributors
 
-* Ruby version
+David Merritt - davidmerrit6@gmail.com
 
-* System dependencies
+Erich Welz - erich@welz.ca
 
-* Configuration
+FUNCTIONALITY
 
-* Database creation
+This project allows you to find and message musicians near you for collaboration
 
-* Database initialization
+Users can leave other users references. 
 
-* How to run the test suite
+Feature PostGres, Geolocation, RegExp Validations
 
-* Services (job queues, cache servers, search engines, etc.)
+Styling with Foundation
 
-* Deployment instructions
+Ruby 2.00 / Rails 4.00
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+In order to preview this application, you must have PostGres!
