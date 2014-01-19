@@ -5,10 +5,10 @@ class UsersController < ApplicationController
   def index
     if params[:tag]
     @users = User.tagged_with(params[:tag])
-    elsif params[:query] != " " && params[:query] != ""
+    elsif params[:query]
       search = PgSearch.multisearch(params[:query])
       @users = search.map(&:searchable)
-    elsif current_user
+    elsif current_user && current_user.nearbys.length >= 3
       @users = current_user.nearbys
     else
       @users = User.all
