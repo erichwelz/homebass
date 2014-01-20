@@ -35,7 +35,7 @@
               <li>
                 <%= link_to "My Messages(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
               </li>   
-              <li class="mini-photo hide-for-small"> <%= image_tag current_user.avatar.url(:mini) %> </li>
+             <!--  Removed due to S3 storage not creating :mini <li class="mini-photo hide-for-small"> <%= image_tag current_user.avatar.url(:mini) %> </li> -->
               <li class="show-for-small">
                 <%= link_to "My Profile", user_path(current_user.id) %>
               </li>
