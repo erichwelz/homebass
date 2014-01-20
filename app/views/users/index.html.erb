@@ -22,22 +22,27 @@
 
 <div class="row">
   <h3>Listing Musicians</h3>
-    <ul class="large-block-grid-3 medium-block-grid-2 small-block-grid-1">  
-      <% @users.each do |user| %>
-        <li>
-        <h4><%= link_to "#{user.full_name}(#{user.target_references.sum(:feedback_value)})", user_path(user.id) %></h4>
-          <p><%=link_to image_tag(user.avatar.url(:thumb)), user_path(user.id) %><br>
-             Genres: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
-             Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
-          <% if current_user %>
-             Distance from you: <%= user.distance_to(current_user, :km).round(1) %> KM<br>
-          <% end %>
-             City: <%= user.city %><br>
-             Biography: <%= truncate(user.bio, length: 100) %><br>
-             Looking for: <%= truncate(user.looking_for, length: 100) %>
-          </p>
-        </li>
-      <% end %>
-    </ul>
-    <%#= paginate @users %>
+      <ul class="large-block-grid-3 medium-block-grid-2 small-block-grid-1"> 
+        <% @users.each do |user| %>
+          <li>
+            <div id="musician-name-img">  
+              <h4><%= link_to "#{user.full_name}(#{user.target_references.sum(:feedback_value)})", user_path(user.id) %></h4>
+
+              <p><%=link_to image_tag(user.avatar.url(:thumb)), user_path(user.id) %><br>
+            </div>      
+               Genres: <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
+               Instruments: <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
+
+  
+            <% if current_user %>
+               Distance from you: <%= user.distance_to(current_user, :km).round(1) %> KM<br>
+            <% end %>
+               City: <%= user.city %><br>
+               Biography: <%= truncate(user.bio, length: 100) %><br>
+               Looking for: <%= truncate(user.looking_for, length: 100) %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+      <%#= paginate @users %>  
 </div>

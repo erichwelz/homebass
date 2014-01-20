@@ -27,16 +27,15 @@
              <li>
                 <%= form_tag users_path, :method => :get do %>
                 <%= text_field_tag :query, params[:query], placeholder: "Search" %>
-              </li>
-              <li>
                 <% end %>
               </li>
+             
             <% if current_user %>
-                <li>
+             
+              <li>
                 <%= link_to "My Messages(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
               </li>   
-
-
+              <li class="mini-photo hide-for-small"> <%= image_tag current_user.avatar.url(:mini) %> </li>
               <li class="show-for-small">
                 <%= link_to "My Profile", user_path(current_user.id) %>
               </li>
@@ -49,10 +48,6 @@
               <li li class="show-for-small">
                 <%= link_to "Logout", :logout, method: :post %>
               </li> 
-
-        
-              
-
               <li class="has-dropdown hide-for-small">
                 <a href="#">
                   <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id) %>
