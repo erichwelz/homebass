@@ -23,8 +23,10 @@
               <div id="musician-name-img">  
                 <div class="user-name"><%= link_to "#{user.full_name}", user_path(user.id) %>
                 <span title="Score based on other users feedback">(<%= user.target_references.sum(:feedback_value) %>)</span></div>
-
-                <%=link_to image_tag(user.avatar.url(:thumb)), user_path(user.id) %><hr />
+                  <div id="musician-img">
+                    <%=link_to image_tag(user.avatar.url(:thumb)), user_path(user.id) %>
+                  </div> 
+                  <hr /> 
               </div>      
                 <span class="user-attr">Genres:</span> <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
                 <span class="user-attr">Instruments:</span> <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
