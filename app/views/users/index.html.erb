@@ -5,11 +5,12 @@
     <div class="title">Canada's #1 Source for Non-Flakey Musicians!</div><br/> 
       <div class="tag-line">Find musicians who play the instruments and genres you're interested in.<br/>
       Share your good and not-so-good experiences with other musicians.<br/>
-      Start contacting people near you today!</div><br/>
+      Start contacting people near you today!<br/>
 
     <% unless current_user %>
       <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
     <% end %>
+    </div>
   </div>
   <div class="large-2 medium-1 small-0 columns">&nbsp</div> 
 </div>

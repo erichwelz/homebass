@@ -1,8 +1,8 @@
+
 html body{
 	background: linear-gradient(white, #849FDB);	
 	background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'Raleway', sans-serif;
  }
 
 li{
@@ -70,7 +70,6 @@ hr{
 }
 
 .user-name{
-  font-family: 'Oranienbaum', serif;
   font-size: 23px;
   margin: 15px 0;
 }
@@ -98,4 +97,8 @@ hr{
 
 h1{
   font-family: 'Oranienbaum', serif;
+}
+
+*{
+  font-family: 'Raleway', sans-serif;
 }
