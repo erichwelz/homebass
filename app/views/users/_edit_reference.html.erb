@@ -1,6 +1,6 @@
 <% if current_user %>
 
-  <h4>Change Reference for <%= @user.first_name %></h4>
+  <h3>Change the Reference you left for <%= @user.first_name %></h3>
 
   <%= form_for([@user, @reference]) do |f| %>
     <div id="reference-form-errors" > 
@@ -31,4 +31,6 @@
   <% end %>
 <% else %>
   <p>Please <%= link_to 'log in', new_session_path %> to leave a reference.</p>
-<% end %>
+<% end %> 
+<hr>
+<%= link_to "Back to My References", user_references_path %> 

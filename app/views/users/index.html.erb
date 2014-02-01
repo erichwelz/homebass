@@ -3,13 +3,13 @@
   <div class="large-2 columns small-0 columns">&nbsp</div>
   <div class="large-8 columns small-12 columns" id="container">
     <div class="title">Canada's #1 Source for Non-Flakey Musicians!</div><br/> 
-      <div class="tag-line">Find musicians who play the instruments and genres you're interested in.<br/>
+    <div class="tag-line">
+      Find musicians who play the instruments and genres you're interested in.<br/>
       Share your good and not-so-good experiences with other musicians.<br/>
       Start contacting people near you today!<br/>
-
-    <% unless current_user %>
-      <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
-    <% end %>
+        <% unless current_user %>
+          <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
+        <% end %>
     </div>
   </div>
   <div class="large-2 medium-1 small-0 columns">&nbsp</div> 
@@ -17,32 +17,37 @@
 
 <div class="row">
   <div class="title">Listing Musicians:</div>
-      <ul class="large-block-grid-3 medium-block-grid-2 small-block-grid-1"> 
-        <% @users.each do |user| %>
-          <li>
-            <div id="musician-home-block">  
-              <div id="musician-name-img">  
-                <div class="user-name"><%= link_to "#{user.full_name}", user_path(user.id) %>
-                <span title="Score based on other users feedback">(<%= user.target_references.sum(:feedback_value) %>)</span></div>
-                  <div id="musician-img">
-                    <%=link_to image_tag(user.avatar.url(:thumb)), user_path(user.id) %>
-                  </div> 
-                  <hr /> 
-              </div>      
-                <span class="user-attr">Genres:</span> <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
-                <span class="user-attr">Instruments:</span> <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
-
-    
-                <span class="user-attr">City:</span> <%= user.city %> 
-                <% if current_user %>-
-                  <%= user.distance_to(current_user, :km).round(1) %> KM from you 
-                <% end %><br>
-                <span class="user-attr">Biography:</span> <%= truncate(user.bio, length: 100) %><br>
-                <span class="user-attr">Looking for:</span> <%= truncate(user.looking_for, length: 100) %>
-              </p>
-            </li>
-          <% end %>
-      </ul>
-    </div> 
+    <ul class="large-block-grid-3 medium-block-grid-2 small-block-grid-1"> 
+      <% @users.each do |user| %>
+        <li>
+          <div id="musician-home-block">  
+            <div id="musician-name-img">  
+              <div class="user-name">
+                <%= link_to "#{user.full_name}", user_path(user.id) %>
+                <span title="Score based on other users feedback">
+                  (<%= user.target_references.sum(:feedback_value) %>)
+                </span>
+              </div>
+              <div id="musician-img">
+                <%=link_to image_tag(user.avatar.url(:thumb)), user_path(user.id) %>
+              </div> 
+              <hr /> 
+            </div>      
+            <span class="user-attr">Genres:</span> 
+              <%= raw user.genre_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
+            <span class="user-attr">Instruments:</span> 
+              <%= raw user.instrument_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>   
+            <span class="user-attr">City:</span> <%= user.city %> 
+              <% if current_user %>-
+                <%= user.distance_to(current_user, :km).round(1) %> KM from you 
+              <% end %><br>
+            <span class="user-attr">Biography:</span> 
+              <%= truncate(user.bio, length: 100) %><br>
+            <span class="user-attr">Looking for:</span> 
+              <%= truncate(user.looking_for, length: 100) %>
+          </li>
+        <% end %>
+    </ul>
+  </div> 
     <%#= paginate @users %>  
 </div>

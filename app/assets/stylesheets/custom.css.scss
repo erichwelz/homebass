@@ -1,9 +1,37 @@
 
-html body{
+body{
 	background: linear-gradient(white, #849FDB);	
 	background-repeat: no-repeat;
   background-attachment: fixed;
- }
+}
+
+h1{
+  font-family: 'Oranienbaum', serif;
+}
+
+h2{
+  font-family: 'Oranienbaum', serif;
+}
+
+h3{
+  font-family: 'Oranienbaum', serif;
+}
+
+h4{
+  font-family: 'Oranienbaum', serif;
+}
+
+h5{
+  font-family: 'Oranienbaum', serif;
+}
+
+h6{
+  font-family: 'Oranienbaum', serif;
+}
+
+*{
+  font-family: 'Raleway', sans-serif;
+}
 
 li{
 	list-style-type: none;
@@ -56,7 +84,6 @@ hr{
   border-color: #DDD;
   min-height: 376px;
   max-width: 400px
-
 }
 
 #container{
@@ -83,6 +110,7 @@ hr{
 .title{
   font-family: 'Oranienbaum', serif;
   letter-spacing: 1.5px;
+  line-height: 120%;
   margin: 10px;
   padding: 10px;
   font-weight: bold;
@@ -92,13 +120,5 @@ hr{
 .tag-line{
   text-align: centre;
   margin: 0 10px;
-  padding: 0 10px;
-}
-
-h1{
-  font-family: 'Oranienbaum', serif;
-}
-
-*{
-  font-family: 'Raleway', sans-serif;
+  padding: 0 10px 10px 10px;
 }

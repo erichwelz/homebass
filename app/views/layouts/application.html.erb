@@ -13,31 +13,29 @@
     <link href='http://fonts.googleapis.com/css?family=Oranienbaum|Raleway' rel='stylesheet' type='text/css'>
   </head>
     <body>
-
-     <!-- Navigation Bar from Foundation Template -->
+    <!-- Navigation Bar from Foundation Template -->
       <div class="fixed">
         <nav class="top-bar" data-topbar>
           <ul class="title-area">
             <li class="name">
               <h1><a href="/">HomeBass</a></h1>
             </li>
-            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+            <li class="toggle-topbar menu-icon">
+              <a href="#"><span>menu</span></a>
+            </li>
           </ul>
-
-        <section class="top-bar-section">
+          <section class="top-bar-section">
             <ul class="right">
-             <li>
+              <li>
                 <%= form_tag users_path, :method => :get do %>
-                <%= text_field_tag :query, params[:query], placeholder: "Search" %>
+                  <%= text_field_tag :query, params[:query], placeholder: "Search" %>
                 <% end %>
-              </li>
-             
-            <% if current_user %>
-             
+              </li>      
+              <% if current_user %>   
               <li>
                 <%= link_to "My Messages(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
               </li>   
-             <!--  Removed due to S3 storage not creating :mini <li class="mini-photo hide-for-small"> <%= image_tag current_user.avatar.url(:mini) %> </li> -->
+              <!--  Removed due to S3 storage not creating :mini <li class="mini-photo hide-for-small"> <%= image_tag current_user.avatar.url(:mini) %> </li> -->
               <li class="show-for-small">
                 <%= link_to "My Profile", user_path(current_user.id) %>
               </li>
@@ -50,39 +48,43 @@
               <li li class="show-for-small">
                 <%= link_to "Logout", :logout, method: :post %>
               </li> 
-              <li class="has-dropdown hide-for-small">
+              <li class="has-dropdown hide-for-small"><!-- this li wasn't closed -->
                 <a href="#">
                   <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id) %>
                 </a>
-            <ul class="dropdown">
-              <li>
-                <%= link_to "My References", user_references_path(current_user.id) %>
+                <ul class="dropdown">
+                  <li>
+                    <%= link_to "My References", user_references_path(current_user.id) %>
+                  </li>
+                  <li>
+                    <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+                  </li>    
+                  <li>
+                    <%= link_to "Logout", :logout, method: :post %>
+                  </li>      
+                  <% else %>
+                  <ul class="right">
+                  <li>
+                    <%= link_to "Register", new_user_path %>
+                  </li> 
+                  <li>
+                    <%= link_to "Login", :login %>
+                  </li>
+                </ul>
+                <% end %>
+                </ul>
               </li>
-              <li>
-                <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-              </li>    
-              <li>
-                <%= link_to "Logout", :logout, method: :post %>
-              </li>      
-
-            <% else %>
-            <ul class="right">
-              <li><%= link_to "Register", new_user_path %></li> 
-              <li><%= link_to "Login", :login %></li>
-            </ul>
-            <% end %>
-            </ul>
             </ul>    
-        </section>
-      </nav>
-    </div>
+          </section>
+        </nav>
+      </div>
 
-<div>
-  <p id="notice"><%= flash[:notice] %></p>
-  <p id="alert"><%= flash[:alert] %></p>
-</div>
+      <div>
+        <p id="notice"><%= flash[:notice] %></p>
+        <p id="alert"><%= flash[:alert] %></p>
+      </div>
 
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
+      <%= yield %>
+      <%= javascript_include_tag "application" %>
   </body>
 </html>

@@ -1,20 +1,20 @@
 <div class="row">
   <div class="large-9 columns medium-9 columns">
-    <h3><%= @user.full_name %></h3>   
+    <h2><%= @user.full_name %></h2>   
     <p>
       <%= image_tag @user.avatar.url(:medium) %><br>
-      City: <%= @user.city %><br>
-      Instruments: <%= @user.instrument_list %><br>
-      Prefered Genres: <%= @user.genre_list %><br><br>
-      Biography: <%= @user.bio %><br><br>
-      Looking For: <%= @user.looking_for %><br><br>
+      <span class="user-attr">City: </span><%= @user.city %><br>
+      <span class="user-attr">Instruments: </span><%= @user.instrument_list %><br>
+      <span class="user-attr">Prefered Genres: </span><%= @user.genre_list %><br><br>
+      <span class="user-attr">Biography: </span><%= @user.bio %><br><br>
+      <span class="user-attr">Looking For: </span><%= @user.looking_for %><br><br>
       <a href=<%="#{@user.personal_url}"%>>My Website</a><br>
     </p>
     <hr />
   </div>
   <div class="large-3 columns medium-9 columns">
+    <a href="#ref"><h4>Feedback Rating</h4></a>
     <div id="feedback-rating">
-      <a href="#ref"><h3>Feedback Rating</h3></a>
       <%= render "feedback_rating" %>
     </div>
   </div>

@@ -1,4 +1,4 @@
-  <li>Feedback Rating: <%= @user.target_references.sum(:feedback_value) %></li>
+  <li>Time feedback was left: <%= @user.target_references.sum(:feedback_value) %></li>
   <li>Feedback Score: <%= number_to_percentage((100*
   @user.target_references.where(feedback_value: 1).count / 
    [(@user.target_references.where(feedback_value: 1).count +
