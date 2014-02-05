@@ -1,15 +1,15 @@
 <br>
 <div class="row">
-  <div class="large-2 columns small-0 columns">&nbsp</div>
-  <div class="large-8 columns small-12 columns" id="container">
-    <div class="title">Canada's #1 Source for Non-Flakey Musicians!</div><br/> 
+  <div class="large-2 medium-1 small-0 columns">&nbsp</div>
+  <div class="large-8 medium-10 small-12 columns" id="container">
+    <div class="title center">Canada's #1 Source for Non-Flakey Musicians!</div>
     <div class="tag-line">
       Find musicians who play the instruments and genres you're interested in.<br/>
       Share your good and not-so-good experiences with other musicians.<br/>
       Start contacting people near you today!<br/>
         <% unless current_user %>
-          <%= link_to("Join Today", new_user_path, :class => "button radius tiny") %>
-        <% end %>
+          <br/><%= link_to("Join Today", new_user_path, :class => "button radius") %>
+        <% end %><br/>
     </div>
   </div>
   <div class="large-2 medium-1 small-0 columns">&nbsp</div> 
@@ -42,9 +42,9 @@
                 <%= user.distance_to(current_user, :km).round(1) %> KM from you 
               <% end %><br>
             <span class="user-attr">Biography:</span> 
-              <%= truncate(user.bio, length: 100) %><br>
+              <%= truncate(user.bio, length: 120) %><br>
             <span class="user-attr">Looking for:</span> 
-              <%= truncate(user.looking_for, length: 100) %>
+              <%= truncate(user.looking_for, length: 80) %>
           </li>
         <% end %>
     </ul>

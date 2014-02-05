@@ -44,6 +44,10 @@ hr{
 	color: #fff;
 }
 
+.button.radius{
+  color: #fff;
+}
+
 .Positive{
   color: green;
 }
@@ -82,7 +86,7 @@ hr{
   border-style: solid;
   border-width: 1px;
   border-color: #DDD;
-  min-height: 376px;
+  min-height: 335px;
   max-width: 400px
 }
 
@@ -94,7 +98,7 @@ hr{
   background-color: #f9f9f9;
   border-style: solid;
   border-width: 1px;
-  border-color: #DDD; 
+  border-color: #DDD;
 }
 
 .user-name{
@@ -109,7 +113,7 @@ hr{
 }
 
 .title{
-  font-family: 'Oranienbaum', serif;
+  font-family: 'Oranienbaum', serif; 
   letter-spacing: 1.5px;
   line-height: 120%;
   margin: 10px;
@@ -119,7 +123,11 @@ hr{
 }
 
 .tag-line{
-  text-align: centre;
-  margin: 0 10px;
+  margin-left: 20px;
   padding: 0 10px 10px 10px;
+  font-size: 16px  
+}
+
+.center{
+  text-align: center;  
 }
