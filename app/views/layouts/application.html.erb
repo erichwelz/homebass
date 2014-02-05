@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="../favicon.png">
-    
+
     <title><%= content_for?(:title) ? yield(:title) : "HomeBass" %></title>
 
     <%= stylesheet_link_tag    "application" %>
@@ -30,11 +30,11 @@
                 <%= form_tag users_path, :method => :get do %>
                   <%= text_field_tag :query, params[:query], placeholder: "Search" %>
                 <% end %>
-              </li>      
-              <% if current_user %>   
+              </li>
+              <% if current_user %>
               <li>
                 <%= link_to "My Messages(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
-              </li>   
+              </li>
               <!--  Removed due to S3 storage not creating :mini <li class="mini-photo hide-for-small"> <%= image_tag current_user.avatar.url(:mini) %> </li> -->
               <li class="show-for-small">
                 <%= link_to "My Profile", user_path(current_user.id) %>
@@ -44,10 +44,10 @@
               </li>
               <li li class="show-for-small">
                 <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-              </li>    
+              </li>
               <li li class="show-for-small">
                 <%= link_to "Logout", :logout, method: :post %>
-              </li> 
+              </li>
               <li class="has-dropdown hide-for-small"><!-- this li wasn't closed -->
                 <a href="#">
                   <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id) %>
@@ -58,15 +58,15 @@
                   </li>
                   <li>
                     <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-                  </li>    
+                  </li>
                   <li>
                     <%= link_to "Logout", :logout, method: :post %>
-                  </li>      
+                  </li>
                   <% else %>
                   <ul class="right">
                   <li>
                     <%= link_to "Register", new_user_path %>
-                  </li> 
+                  </li>
                   <li>
                     <%= link_to "Login", :login %>
                   </li>
@@ -74,7 +74,7 @@
                 <% end %>
                 </ul>
               </li>
-            </ul>    
+            </ul>
           </section>
         </nav>
       </div>

@@ -1,6 +1,6 @@
 
 body{
-	background-image: url('../images/white_texture.jpg');
+	background-image: url('../images/fancy_deboss.png');
 }
 
 a:hover{
@@ -81,8 +81,7 @@ hr{
 }
 
 #musician-home-block{
-  background-image: url('../images/paper_texture.jpg');  
- 
+
   margin: auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -95,7 +94,6 @@ hr{
 }
 
 #container{
-  background-image: url('../images/paper_texture.jpg');  
   margin: 0.5rem, 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -117,7 +115,7 @@ hr{
 }
 
 .title{
-  font-family: 'Oranienbaum', serif; 
+  font-family: 'Oranienbaum', serif;
   letter-spacing: 1.5px;
   line-height: 120%;
   margin: 10px;
@@ -133,3 +131,18 @@ hr{
   font-size: 16px;
 }
 
+.top-bar{
+  background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
+}
+
+.top-bar-section ul{
+  background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
+}
+
+.top-bar-section li a:not(.button) {
+  background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
+}
+
+.top-bar-section li a:not(.button):hover {
+  background: #116d9e;
+}
