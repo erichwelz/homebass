@@ -3,6 +3,10 @@ body{
 	background-image: url('../images/white_texture.jpg');
 }
 
+a:hover{
+  transition: .5s;
+}
+
 h1{
   font-family: 'Oranienbaum', serif;
 }
@@ -113,7 +117,7 @@ hr{
   letter-spacing: 1.5px;
   line-height: 120%;
   margin: 10px;
-  padding: 10px;
+  padding: 10px 10px 10px 50px;
   font-weight: bold;
   font-size: 25px;
 }
@@ -121,5 +125,5 @@ hr{
 .tag-line{
   text-align: centre;
   margin: 0 10px;
-  padding: 0 10px 10px 10px;
+  padding: 0 10px 10px 50px;
 }
