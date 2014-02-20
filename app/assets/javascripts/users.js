@@ -7,5 +7,5 @@ $("#sort").change(
       dataType: "script",
       data: { order_by: value }
     })
-  })l
+  })
 
