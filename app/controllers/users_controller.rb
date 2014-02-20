@@ -2,18 +2,32 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create,] 
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
+  # def index
+  #   if params[:tag]
+  #     @users = User.tagged_with(params[:tag])
+  #   elsif params[:query] && PgSearch.multisearch(params[:query]).length >= 1
+  #     search = PgSearch.multisearch(params[:query])
+  #     @users = search.map(&:searchable)
+  #   elsif current_user && current_user.nearbys.length >= 3
+  #     @users = current_user.nearbys
+  #   else
+  #     @users = User.all
+  #   end
+  # end
+
   def index
-    if params[:tag]
-      @users = User.tagged_with(params[:tag])
-    elsif params[:query] && PgSearch.multisearch(params[:query]).length >= 1
-      search = PgSearch.multisearch(params[:query])
-      @users = search.map(&:searchable)
-    elsif current_user && current_user.nearbys.length >= 3
+    if params[:sort] == "near"
       @users = current_user.nearbys
     else
       @users = User.all
     end
+      
+      respond_to do |format|
+      format.html
+      format.js {}
+      end
   end
+
 
   # def index
   #    if params[:tag] 

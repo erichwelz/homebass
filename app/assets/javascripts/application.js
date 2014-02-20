@@ -13,7 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require_tree .
+//= require_tree 
+
 
 $(function(){ $(document).foundation(); });
 
+$("#sort").change(
+  function(){
+    var value = $("#sort").val();
+    $.ajax({
+      type: "GET",
+      dataType: "script",
+      data: { sort: value }
+    })
+  })
