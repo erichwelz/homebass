@@ -146,3 +146,10 @@ hr{
 .top-bar-section li a:not(.button):hover {
   background: #116d9e;
 }
+
+#sort{
+  float: right;
+  max-width: 170px;
+  border-radius: 5px;
+  /*margin-right: 20px*/
+}

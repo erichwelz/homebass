@@ -1,4 +1,11 @@
-<br>
+<div class="row">
+          <select id="sort">
+            <option value="all">All Musicians</option>
+            <option value="near">Near me only</option>
+          </select>
+  <br>
+</div>
+
 <div class="row">
   <div class="large-2 medium-1 small-0 columns">&nbsp</div>
   <div class="large-8 medium-10 small-12 columns" id="container">
@@ -16,12 +23,7 @@
 </div>
 
 <div class="row">
-  <div class="title">Listing Musicians 
-        <select id="sort">
-          <option value="all">All Musicians</option>
-          <option value="near">Near me only</option>
-        </select>
-       </div>
+<br>  
   <div id="users"><%= render 'users' %></div>     
    
 </div>
