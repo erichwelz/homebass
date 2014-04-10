@@ -1,6 +1,6 @@
 MusicianFinder/Homebass
 
-Bitmaker Labs Final Project - Deployed on Heroku using Amazon S3 for assets: musicianfinder.herokuapp.com
+Bitmaker Labs Final Project - Deployed on Heroku using Amazon S3 for assets: homebass.ca
 
 Contributors
 
@@ -18,6 +18,4 @@ Feature PostGres, Geolocation, RegExp Validations
 
 Styling with Foundation
 
-Ruby 2.00 / Rails 4.00
-
-In order to preview this application, you must have PostGres!
+Ruby 2.00 / Rails 4.00!

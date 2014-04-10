@@ -11,7 +11,6 @@ source 'https://rubygems.org'
 
   gem 'pg_search' #full-text search for postgres
 
-
   gem 'geocoder'
   gem 'acts-as-taggable-on'
 
@@ -35,11 +34,19 @@ group :development, :test do
   gem 'jazz_hands'
   gem 'quiet_assets'
   gem 'sunspot_solr'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+end
+
+group :test do
+
 end
 
 group :production do
