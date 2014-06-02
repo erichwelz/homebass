@@ -57,7 +57,7 @@ hr{
 }
 
 .Neutral{
-  color: grey;
+  color: gray;
 }
 
 .Negative{
@@ -140,11 +140,15 @@ hr{
 }
 
 .top-bar-section li a:not(.button) {
-  background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
+  background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%) !important;
 }
 
 .top-bar-section li a:not(.button):hover {
   background: #116d9e;
+}
+
+.top-bar-section ul.right li{
+  background: #2e9bd4;
 }
 
 #sort{
