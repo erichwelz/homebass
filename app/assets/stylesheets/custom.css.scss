@@ -7,6 +7,8 @@ a:hover{
   transition: .5s;
 }
 
+
+
 h1{
   font-family: 'Oranienbaum', serif;
 }
@@ -148,7 +150,7 @@ hr{
 }
 
 .top-bar-section li a:not(.button):hover {
-  background: #116d9e;
+  background: #116d9e !important;
 }
 
 .top-bar-section ul.right li{
