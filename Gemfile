@@ -5,7 +5,7 @@ ruby '2.0.0'
   gem 'thin'
   gem 'faker' 
   gem 'sorcery'
-  gem 'paperclip'
+  gem 'paperclip', '3.5.2'
   gem 'aws-sdk' #required for Amazon S3 paperclip
   gem "kaminari"
   gem 'foundation-rails'

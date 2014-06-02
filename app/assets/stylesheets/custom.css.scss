@@ -135,6 +135,10 @@ hr{
   background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
 }
 
+.top-bar ul.title-area li.name :hover{
+  background: #116d9e;
+}
+
 .top-bar-section ul{
   background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
 }
