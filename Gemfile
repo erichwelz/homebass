@@ -7,7 +7,7 @@ ruby '2.0.0'
   gem 'sorcery'
   gem 'paperclip', '3.5.2'
   gem 'aws-sdk' #required for Amazon S3 paperclip
-  gem "kaminari"
+  gem "kaminari" #for Pagination
   gem 'foundation-rails'
 
   gem 'pg_search' #full-text search for postgres
