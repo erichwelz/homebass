@@ -13,7 +13,8 @@
           Performed: <%= ref.check("performed") %>
           Recorded: <%= ref.check("recorded") %><br>
           Last Updated: <%= ref.updated_at %><br>
-          <%= link_to "Update This Reference","references/#{ref.id}/edit" %><br>
+          <%= link_to "Update This Reference","references/#{ref.id}/edit", class: "button radius tiny" %><br>
+
         </p>
       </li>
     <% end %>

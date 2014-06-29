@@ -7,6 +7,8 @@ a:hover{
   transition: .5s;
 }
 
+
+
 h1{
   font-family: 'Oranienbaum', serif;
 }
@@ -57,7 +59,7 @@ hr{
 }
 
 .Neutral{
-  color: grey;
+  color: gray;
 }
 
 .Negative{
@@ -135,16 +137,24 @@ hr{
   background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
 }
 
+.top-bar ul.title-area li.name :hover{
+  background: #116d9e;
+}
+
 .top-bar-section ul{
   background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
 }
 
 .top-bar-section li a:not(.button) {
-  background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%);
+  background: -webkit-linear-gradient(top, #2e9bd4 0%, #116d9e 100%) !important;
 }
 
 .top-bar-section li a:not(.button):hover {
-  background: #116d9e;
+  background: #116d9e !important;
+}
+
+.top-bar-section ul.right li{
+  background: #2e9bd4;
 }
 
 #sort{
