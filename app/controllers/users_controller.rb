@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if params[:sort] == "near"
       users = current_user.nearbys
     else
-      users = User.all
+      users = (current_user.blank? ? User.all : User.find(:all, :conditions => ["id != ?", current_user.id]))
     end
 
     if params[:tag]
