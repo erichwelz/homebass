@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new, :create,] 
+  skip_before_filter :require_login, only: [:index, :new, :create]
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
 
     if params[:tag]
-      @users = User.tagged_with(params[:tag])    
+      @users = User.tagged_with(params[:tag])
     elsif params[:query] && PgSearch.multisearch(params[:query]).length >= 1
       search = PgSearch.multisearch(params[:query])
       @users = search.map(&:searchable)
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @recipient = User.find(params[:id])
       if current_user
-        @reference = @user.target_references.build 
+        @reference = @user.target_references.build
         @invitation = Invitation.new
         @invitation.recipient_id = @recipient.id
       end
@@ -82,18 +82,18 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:comment, 
-                                 :email, 
-                                 :password, 
-                                 :password_confirmation, 
-                                 :first_name, 
-                                 :last_name, 
-                                 :city, 
-                                 :postal_code, 
-                                 :bio, 
-                                 :instrument_list, 
-                                 :genre_list, 
-                                 :latitude, 
+    params.require(:user).permit(:comment,
+                                 :email,
+                                 :password,
+                                 :password_confirmation,
+                                 :first_name,
+                                 :last_name,
+                                 :city,
+                                 :postal_code,
+                                 :bio,
+                                 :instrument_list,
+                                 :genre_list,
+                                 :latitude,
                                  :longitude,
                                  :looking_for,
                                  :personal_url,

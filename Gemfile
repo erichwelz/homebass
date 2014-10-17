@@ -1,21 +1,23 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+  gem 'rails', '4.0.2'
+
   gem 'pg'
+  gem 'pg_search' #full-text search for postgres
+
   gem 'thin'
-  gem 'faker' 
+  gem 'faker'
   gem 'sorcery'
+
   gem 'paperclip', '3.5.2'
   gem 'aws-sdk' #required for Amazon S3 paperclip
-  gem "kaminari" #for Pagination
+  gem "kaminari" #for pagination
   gem 'foundation-rails'
-
-  gem 'pg_search' #full-text search for postgres
 
   gem 'geocoder'
   gem 'acts-as-taggable-on'
 
-  gem 'rails', '4.0.2'
   gem 'sass-rails', '~> 4.0.0'
   gem 'uglifier', '>= 1.3.0'
   gem 'coffee-rails', '~> 4.0.0'
@@ -30,24 +32,22 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development, :test do
-  gem 'debugger'
-  gem 'jazz_hands'
-  gem 'quiet_assets'
-  gem 'sunspot_solr'
-  gem 'rspec-rails'
-end
-
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'factory_girl_rails'
-  gem 'capybara'
+  gem 'quiet_assets'
+  gem 'sunspot_solr'
+end
+
+group :development, :test do
+  gem 'jazz_hands' #pry, #awesome_print and more
+  gem 'rspec-rails'
   gem 'guard-rspec'
 end
 
 group :test do
-
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 group :production do
