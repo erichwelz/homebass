@@ -12,9 +12,10 @@ class User < ActiveRecord::Base
                     :medium => "300x300>",
                     :thumb => "100x100>" }, :default_url => "/images/:attachment/missing_:style.png"
 
-  before_validation :smart_add_url_protocol
-  before_validation :upcase_postal
-  after_validation :geocode, :if => :postal_code_changed?
+  before_validation { :smart_add_url_protocol }
+  before_validation { self.postal_code = postal_code.upcase }
+
+  before_save { self.email = email.downcase }
 
   validates_confirmation_of :password
 
@@ -32,18 +33,15 @@ class User < ActiveRecord::Base
   validates_format_of :city, :with => /[a-z]/
   validates_format_of :postal_code, :with => /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/
 
+  validates_presence_of :email
   validates_uniqueness_of :email
+  after_validation :geocode, :if => :postal_code_changed?
 
   authenticates_with_sorcery!
-
   geocoded_by :postal_code
 
   acts_as_taggable
   acts_as_taggable_on :genres, :instruments
-
-  def upcase_postal
-    postal_code.upcase! if !postal_code.nil?
-  end
 
   def full_name
     full_name = first_name.capitalize + " " + last_name.capitalize
