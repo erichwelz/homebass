@@ -7,6 +7,7 @@ describe User do
   end
 
     subject { @user }
+
   it { should respond_to(:email) }
   it { should respond_to(:crypted_password) }
   it { should respond_to (:salt)}
@@ -22,5 +23,7 @@ describe User do
   it { should respond_to(:latitude) }
   it { should respond_to(:looking_for) }
   it { should respond_to(:personal_url) }
+
+  it { should be_valid}
 
 end
