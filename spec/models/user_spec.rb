@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe User do
   before do
-    @user = User.new(first_name: "Example", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+    @user = FactoryGirl.build(:user)
   end
 
     subject { @user }
@@ -23,6 +22,8 @@ describe User do
   it { should respond_to(:latitude) }
   it { should respond_to(:looking_for) }
   it { should respond_to(:personal_url) }
+  it { should respond_to(:genre_list) }
+  it { should respond_to(:instrument_list) }
 
   it { should be_valid}
 
