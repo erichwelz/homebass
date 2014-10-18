@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def smart_add_url_protocol
-    if !personal_url.nil?
+    if personal_url.present?
       personal_url = "http://#{personal_url}" unless personal_url[/\Ahttps?:\/\//]
     end
   end

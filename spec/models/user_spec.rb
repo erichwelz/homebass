@@ -24,6 +24,10 @@ describe User do
   it { should respond_to(:personal_url) }
   it { should respond_to(:genre_list) }
   it { should respond_to(:instrument_list) }
+  it { should respond_to(:target_references) }
+  it { should respond_to(:source_references) }
+  it { should respond_to(:invitations) }
+  it { should respond_to(:invitations_received) }
 
   it { should be_valid}
 
