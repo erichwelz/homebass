@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 describe Invitation do
+  let(:user) { FactoryGirl.create(:user) }
   before do
-    @user = FactoryGirl.build(:user)
-    @invitation = @user.invitations.build(content: 'Content',
-                                          user_id: 1,
+    @invitation = user.invitations.build(content: 'Content',
                                           recipient_id: 2)
   end
 
