@@ -1,16 +1,12 @@
 class Reference < ActiveRecord::Base
+  belongs_to :source, :class_name => "User"
+  belongs_to :target, :class_name => "User"
+  default_scope -> { order('created_at DESC') }
+  validates_presence_of :feedback_value, message: "rating must be selected"
 
-  validates_presence_of :comment
-  validates_presence_of :feedback_value, message: "rating be selected"
-
+  validates_presence_of :comment, :source_id, :target_id
   validates :source_id, :uniqueness => { :scope => :target_id, :message => "You may only write one reference per user. You may manage your references from your home page" }
   validate :check_self_reference
-
-  belongs_to :source, :class_name => "User" 
-  belongs_to :target, :class_name => "User"
-
-  scope :by_newest, order("created_at DESC")
-  default_scope by_newest
 
   def check_self_reference
     errors.add(:source_id, "You can't leave a review for yourself") if source_id == target_id
@@ -24,9 +20,9 @@ class Reference < ActiveRecord::Base
       return "Neutral"
     when -1
       return "Negative"
-    end            
+    end
   end
-  
+
   def check(type)
     case self.send(type.to_sym)
     when true
