@@ -14,6 +14,7 @@
         </ul>
     <% end %>
   <div class="large-6 columns medium-8 columns small-12 columns">
+    <div class="required">
       <%= f.label :email %>
       <%= f.text_field :email %>
 
@@ -22,7 +23,6 @@
 
       <%= f.label :last_name, "Last Name"  %>
       <%= f.text_field :last_name %>
-
 
       <%= f.label :password %>
       <%= f.password_field :password %>
@@ -36,17 +36,19 @@
       <%= f.label :postal_code, "Postal Code (used to find nearby musicians)"  %>
       <%= f.text_field :postal_code %>
 
-      <%= f.label "Biography (You can fill me in later) " %>
-      <%= f.text_area :bio %>
-
-      <%= f.label "What are you looking for? (You can fill me in later) " %>
-      <%= f.text_area :looking_for %>
-
       <%= f.label "Genres (separated by commas)" %>
       <%= f.text_field :genre_list %>
 
       <%= f.label "Instruments (separated by commas)" %>
       <%= f.text_field :instrument_list %>
+    </div>
+
+      <%= f.label "Biography" %>
+      <%= f.text_area :bio %>
+
+      <%= f.label "What are you looking for?" %>
+      <%= f.text_area :looking_for %>
+
 
       <%= f.label "Link to Recordings, Band Site etc."  %>
       <%= f.text_field :personal_url %>

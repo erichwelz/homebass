@@ -163,3 +163,12 @@ hr{
   border-radius: 5px;
   margin-right: 5px;
 }
+
+.required label {
+    font-weight: bold;
+}
+.required label:after {
+    color: #e32;
+    content: '*';
+    display:inline;
+}
