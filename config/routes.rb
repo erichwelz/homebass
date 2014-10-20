@@ -1,6 +1,6 @@
 Musicianfinder::Application.routes.draw do
   root :to => 'users#index'
-  get '/users/:id/invitations/:invitation_id/read' => "invitations#read", :as => "mark_as_read" 
+  get '/users/:id/invitations/:invitation_id/read' => "invitations#read", :as => "mark_as_read"
 
   resources :password_resets
   resources :user_sessions
@@ -11,8 +11,9 @@ Musicianfinder::Application.routes.draw do
 
   get 'tags/:tag', to: 'users#index', as: :tag
 
-  get 'login' => 'user_sessions#new', :as => :login
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'join' => 'users#new'
+  get 'login' => 'user_sessions#new'
+  post 'logout' => 'user_sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
