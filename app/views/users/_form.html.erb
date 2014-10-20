@@ -1,7 +1,7 @@
 <div class="row">
-     <div class="large-3 columns medium-2 columns small-0 columns">
-      <p>&nbsp;</p>
-    </div>
+  <div class="large-3 columns medium-2 columns small-1 columns">
+    <p>&nbsp;</p>
+  </div>
   <%= form_for @user, html: { multipart: true } do |f| %>
     <% if @user.errors.any? %>
         <h2>
@@ -13,29 +13,44 @@
           <% end %>
         </ul>
     <% end %>
-  <div class="large-6 columns medium-8 columns small-12 columns">
+  <div class="large-6 columns medium-8 columns small-10 columns">
     <div class="required">
       <%= f.label :email %>
       <%= f.text_field :email %>
     </div>
   </div>
-<div class="large-3 columns medium-2 columns small-0 columns">
-      <p>&nbsp;</p>
-      </div>
+  <div class="large-3 columns medium-2 columns small-1 columns">
+    <p>&nbsp;</p>
   </div>
+</div>
+
 <div class="row">
-  <div class="large-3 columns medium-2 columns small-0 columns">
-      <p>&nbsp;</p>
-      </div>
+  <div class="large-3 columns medium-2 columns small-1 columns">
+    <p>&nbsp;</p>
+  </div>
 
-    <div class="large-6 columns medium-8 columns small-12 columns">
-      <div class="required">
-        <%= f.label :first_name, "First Name" %>
-        <%= f.text_field :first_name %>
+  <div class="required">
+    <div class="large-3 medium-5 small-5 columns">
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="large-3 medium-5 small-5 columns">
+      <%= f.label :last_name, "Last Name" %>
+      <%= f.text_field :last_name %>
+    </div>
+  </div>
 
-        <%= f.label :last_name, "Last Name"  %>
-        <%= f.text_field :last_name %>
-      </div>
+  <div class="large-3 medium-2 small-1 columns">
+    <p>&nbsp;</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-3 columns medium-2 columns small-1 columns">
+    <p>&nbsp;</p>
+  </div>
+
+    <div class="large-6 columns medium-8 columns small-10 columns">
       <div class="required">
         <%= f.label :password %>
         <%= f.password_field :password %>
@@ -65,15 +80,15 @@
         <%= f.label "Link to Recordings, Band Site etc."  %>
         <%= f.text_field :personal_url %>
 
-          <%= f.label "Choose a Photo" %>
-          <%= f.file_field :avatar %>
+        <%= f.label "Choose a Photo" %>
+        <%= f.file_field :avatar %>
 
         <%= f.submit "Save", :class => "radius button" %>
   <% end %>
     </div>
-  <div>
-<div class="large-3 columns medium-2 columns small-0 columns">
-      <p>&nbsp;</p>
-      </div>
+
+  <div class="large-3 columns medium-2 columns small-1 columns">
+    <p>&nbsp;</p>
   </div>
+</div>
 
