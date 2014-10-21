@@ -293,7 +293,6 @@ DEPENDENCIES
   binding_of_caller
   capybara
   coffee-rails (~> 4.0.0)
-  debugger
   factory_girl_rails
   faker
   foundation-rails

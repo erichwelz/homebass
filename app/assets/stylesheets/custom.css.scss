@@ -7,8 +7,6 @@ a:hover{
   transition: .5s;
 }
 
-
-
 h1{
   font-family: 'Oranienbaum', serif;
 }
@@ -162,4 +160,13 @@ hr{
   max-width: 170px;
   border-radius: 5px;
   margin-right: 5px;
+}
+
+.required label {
+    font-weight: bold;
+}
+.required label:after {
+    color: #e32;
+    content: '*';
+    display:inline;
 }
