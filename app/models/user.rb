@@ -23,14 +23,13 @@ class User < ActiveRecord::Base
   validates_length_of :first_name, :maximum => 35
   validates_length_of :last_name, :maximum => 35
 
-  validates_presence_of :city, :postal_code
+  validates_presence_of :postal_code
 
   validates_presence_of :genre_list
   validates_presence_of :instrument_list
 
   validates_format_of :first_name, :with => /[a-z]/
   validates_format_of :last_name, :with => /[a-z]/
-  validates_format_of :city, :with => /[a-z]/
   validates_format_of :postal_code, :with => /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/
 
   validates_presence_of :email

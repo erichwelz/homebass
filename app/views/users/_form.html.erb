@@ -14,26 +14,22 @@
   </div>
 </div>
 
+    <div class="row">
+      <div class="small-10 small-centered medium-8 large-uncentered large-6 columns">
 
       <div class="row">
-        <div class="small-1 medium-2 large-3 columns">
-          <p>&nbsp;</p>
-        </div>
-
         <div class="required">
-          <div class="small-5 medium-4 large-3 columns">
+          <div class="small-6 columns">
             <%= f.label :first_name, "First Name" %>
             <%= f.text_field :first_name %>
           </div>
-          <div class="small-5 medium-4 large-3 columns end">
+          <div class="small-6 columns">
             <%= f.label :last_name, "Last Name" %>
             <%= f.text_field :last_name %>
           </div>
         </div>
       </div>
 
-      <div class="row">
-      <div class="small-10 small-centered medium-8 large-uncentered large-6 columns">
         <div class="required">
 
           <%= f.label :email %>
@@ -44,9 +40,6 @@
 
           <%= f.label :password_confirmation, "Confirm Password" %>
           <%= f.password_field :password_confirmation %>
-
-          <%= f.label "City" %>
-          <%= f.text_field :city %>
 
           <%= f.label :postal_code, "Postal Code (used to find nearby musicians)"  %>
           <%= f.text_field :postal_code %>
@@ -60,6 +53,9 @@
       </div>
 
       <div class="small-10 small-centered medium-8 large-uncentered large-6 columns">
+        <%= f.label "City" %>
+        <%= f.text_field :city %>
+
         <%= f.label "Biography" %>
         <%= f.text_area :bio %>
 
