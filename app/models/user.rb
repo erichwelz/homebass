@@ -20,11 +20,11 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
 
   validates_length_of :password, :minimum => 6, :allow_blank => false, :on => :create
-  validates_length_of :first_name, :maximum => 35, :allow_blank => false
-  validates_length_of :last_name, :maximum => 35, :allow_blank => false
+  validates_length_of :first_name, :maximum => 35
+  validates_length_of :last_name, :maximum => 35
 
-  validates_presence_of :city
-  validates_presence_of :postal_code
+  validates_presence_of :city, :postal_code
+
   validates_presence_of :genre_list
   validates_presence_of :instrument_list
 
