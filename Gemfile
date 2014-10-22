@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-  gem 'rails', '4.0.2'
+  gem 'rails', '4.1.6'
 
   gem 'pg'
   gem 'pg_search' #full-text search for postgres
 
-  gem 'thin'
   gem 'sorcery'
 
   gem 'paperclip', '3.5.2'
@@ -25,12 +24,12 @@ ruby '2.1.2'
   gem 'jquery-ui-rails'
 
  # gem 'jbuilder', '~> 1.2'
-
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development do
+  gem 'spring'
   gem 'faker' #Used for seed data creation
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -51,6 +50,7 @@ group :test do
 end
 
 group :production do
+  gem 'unicorn'
   gem 'rails_12factor'
   gem 'newrelic_rpm'
 end
