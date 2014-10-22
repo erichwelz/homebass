@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.2'
 
   gem 'rails', '4.0.2'
 
@@ -39,7 +39,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'jazz_hands' #pry, #awesome_print and more
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'guard-rspec'
 end
