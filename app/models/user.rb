@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => {
                     :medium => "300x300>",
-                    :thumb => "100x100>" }, :default_url => "/images/:attachment/missing_:style.png"
+                    :thumb => "100x100>",
+                    :mini => "30x30" }, :default_url => "/images/:attachment/missing_:style.png"
 
   before_validation { :smart_add_url_protocol }
   before_validation { self.postal_code = postal_code.upcase }

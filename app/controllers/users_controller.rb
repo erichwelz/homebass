@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
+      #select option doesn't appear unless current_user
     return @users = current_user.nearbys if params[:sort] == "near"
 
     return @users = User.tagged_with(params[:tag]) if params[:tag]

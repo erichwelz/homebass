@@ -35,7 +35,9 @@
               <li>
                 <%= link_to "My Messages(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
               </li>
-              <!--  Removed due to S3 storage not creating :mini <li class="mini-photo hide-for-small"> <%= image_tag current_user.avatar.url(:mini) %> </li> -->
+              <li class="mini-photo hide-for-small">
+              <%= link_to image_tag(current_user.avatar.url(:mini)), user_path(current_user.id) %>
+              </li>
               <li class="show-for-small">
                 <%= link_to "My Profile", user_path(current_user.id) %>
               </li>
@@ -48,7 +50,7 @@
               <li li class="show-for-small">
                 <%= link_to "Logout", :logout, method: :post %>
               </li>
-              <li class="has-dropdown hide-for-small"><!-- this li wasn't closed -->
+              <li class="has-dropdown hide-for-small">
                 <a href="#">
                   <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id) %>
                 </a>
