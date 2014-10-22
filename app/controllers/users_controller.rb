@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       search = PgSearch.multisearch(params[:query])
       @users = search.map(&:searchable)
     else
-      @users = (current_user.blank? ? User.all : User.where.not(id: current_user.id))
+      @users = current_user.present? ? User.all_except(current_user) : User.all
     end
 
       respond_to do |format|
