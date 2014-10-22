@@ -7,7 +7,6 @@ ruby '2.0.0'
   gem 'pg_search' #full-text search for postgres
 
   gem 'thin'
-  gem 'faker'
   gem 'sorcery'
 
   gem 'paperclip', '3.5.2'
@@ -24,15 +23,15 @@ ruby '2.0.0'
 
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
-  gem 'jbuilder', '~> 1.2'
 
-  #gem 'turbolinks'
+ # gem 'jbuilder', '~> 1.2'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development do
+  gem 'faker' #Used for seed data creation
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
