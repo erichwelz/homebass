@@ -1,24 +1,24 @@
 class InvitationsController < ApplicationController
-  before_filter :load_sender, except: [:read]
+  before_filter :load_user, except: [:read]
 
   def index
-	  @invitations = Invitation.all			
-  end	
+	  @invitations = Invitation.all
+  end
 
   def show
 	  @invitation = Invitation.find(params[:id])
-	  @reply = Invitation.new		
+	  @reply = Invitation.new
   end
 
-  def new 
+  def new
 	  @invitation = Invitation.new
   end
 
   def read
 	  @user = current_user
 	  @invitation = Invitation.find(params[:invitation_id])
-	  @invitation.toggle!(:read)
-	
+	  @invitation.toggle!(:recipient_read)
+
 	  if @invitation.save
 	    redirect_to user_invitations_path(@user)
 	  else
@@ -45,11 +45,11 @@ class InvitationsController < ApplicationController
     params.require(:invitation).permit(:content, :recipient_id, :user_id)
   end
 
-  def load_sender
+  def load_user
     @user = User.find(params[:user_id])
   end
 
   def load_recipient
-    @recipient = User.find(params[:user_id])
+    @recipient = User.find(params[:recipient_id])
   end
 end

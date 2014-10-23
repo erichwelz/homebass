@@ -33,7 +33,7 @@
               </li>
               <% if current_user %>
               <li>
-                <%= link_to "My Messages(#{current_user.invitations_received.where(read: false).count})", user_invitations_path(current_user.id) %>
+                <%= link_to "My Messages(#{current_user.invitations_received.where(recipient_read: false).count})", user_invitations_path(current_user.id) %>
               </li>
               <li class="mini-photo hide-for-small">
               <%= link_to image_tag(current_user.avatar.url(:mini)), user_path(current_user.id) %>

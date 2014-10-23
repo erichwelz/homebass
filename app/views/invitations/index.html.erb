@@ -16,14 +16,14 @@
         </tr>
       </thead>
       	<% if current_user.id == @user.id %>
-      	<% @user.invitations_received.where(read: false).each do |invite| %>
+      	<% @user.invitations_received.where(recipient_read: false).each do |invite| %>
       <tbody>
         <tr>
           <td><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %></td>
           <td><%= simple_format invite.content %></td>
           <td><%= invite.created_at.to_formatted_s(:long) %></td>
           <td><%= link_to "Mark as Read", "invitations/#{invite.id}/read"  %></td>
-          <td><%= link_to "Reply", "invitations/#{invite.id}"  %></td>    
+          <td><%= link_to "Reply", "invitations/#{invite.id}"  %></td>
         </tr>
       </tbody>
       <% end %>
@@ -42,14 +42,14 @@
         </tr>
       </thead>
       	<% if current_user.id == @user.id %>
-      	<% @user.invitations_received.where(read: true).each do |invite| %>
+      	<% @user.invitations_received.where(recipient_read: true).each do |invite| %>
       <tbody>
         <tr>
           <td><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %></td>
           <td><%= simple_format invite.content %></td>
           <td><%= invite.created_at.to_formatted_s(:long) %></td>
           <td><%= link_to "Mark as Unread", "invitations/#{invite.id}/read" %></td>
-          <td><%= link_to "Reply", "invitations/#{invite.id}" %></td>    
+          <td><%= link_to "Reply", "invitations/#{invite.id}" %></td>
         </tr>
       </tbody>
       <% end %>
@@ -59,6 +59,6 @@
  </div>
   <div class="large-1 columns">
     <p>&nbsp;</p>
-  </div> 
+  </div>
 </div>
 <br/>
