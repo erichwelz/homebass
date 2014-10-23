@@ -3,11 +3,12 @@ class User < ActiveRecord::Base
   multisearchable :against => [:first_name, :last_name, :city, :bio, :looking_for]
   scope :all_except, ->(user) { where.not(id: user) }
 
-  has_many :target_references, class_name: "Reference", foreign_key: :target_id
+  has_many :target_references, class_name: "Reference", foreign_key: :target_idq
   has_many :source_references, class_name: "Reference", foreign_key: :source_id
 
   has_many :invitations
   has_many :invitations_received, class_name: "Invitation", foreign_key: :recipient_id
+  has_many :invitations_sent, class_name: "Invitation", foreign_key: :user_id
 
   has_attached_file :avatar, :styles => {
                     :medium => "300x300>",

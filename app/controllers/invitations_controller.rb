@@ -17,7 +17,12 @@ class InvitationsController < ApplicationController
   def read
 	  @user = current_user
 	  @invitation = Invitation.find(params[:invitation_id])
-	  @invitation.toggle!(:recipient_read)
+
+    if current_user.id == @invitation.recipient_id
+	   @invitation.toggle!(:recipient_read)
+    else
+     @invitation.toggle!(:sender_read)
+    end
 
 	  if @invitation.save
 	    redirect_to user_invitations_path(@user)
