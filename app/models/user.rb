@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   multisearchable :against => [:first_name, :last_name, :city, :bio, :looking_for]
   scope :all_except, ->(user) { where.not(id: user) }
 
+
   has_many :target_references, class_name: "Reference", foreign_key: :target_id
   has_many :source_references, class_name: "Reference", foreign_key: :source_id
 

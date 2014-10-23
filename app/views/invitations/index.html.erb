@@ -47,7 +47,7 @@
         <% @user.invitations_sent.each do |invite| %>
       <tbody>
         <tr class="<%= 'unread_mail' unless invite.sender_read %>">
-          <td><%= link_to "#{invite.user.full_name}", "/users/#{invite.user_id}" %></td>
+          <td><%= link_to "#{invite.recipient.full_name}", user_path(invite.recipient_id) %></td>
           <td><%= simple_format invite.content %></td>
           <td><%= invite.created_at.to_formatted_s(:long) %></td>
            <td>
