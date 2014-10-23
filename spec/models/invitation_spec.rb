@@ -9,11 +9,12 @@ describe Invitation do
 
   subject { @invitation }
 
+  it { should respond_to(:user) }
   it { should respond_to(:content) }
   it { should respond_to(:user_id) }
   it { should respond_to(:recipient_id) }
-  it { should respond_to(:user) }
-  it { should respond_to(:read) }
+  it { should respond_to(:recipient_read) }
+  it { should respond_to(:sender_read) }
 
   it { should be_valid }
 

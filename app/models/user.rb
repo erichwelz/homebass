@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :invitations
   has_many :invitations_received, class_name: "Invitation", foreign_key: :recipient_id
+  has_many :invitations_sent, class_name: "Invitation", foreign_key: :user_id
 
   has_attached_file :avatar, :styles => {
                     :medium => "300x300>",
