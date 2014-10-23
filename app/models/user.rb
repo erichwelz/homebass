@@ -46,7 +46,9 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :genres, :instruments
 
   def full_name
-    full_name = first_name.capitalize + " " + last_name.capitalize
+    if first_name.present? && last_name.present?
+      full_name = (first_name.capitalize + " " + last_name.capitalize)
+    end
   end
 
   def smart_add_url_protocol

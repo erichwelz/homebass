@@ -9,7 +9,7 @@ class Reference < ActiveRecord::Base
   validate :check_self_reference
 
   def check_self_reference
-    errors.add(:source_id, "You can't leave a review for yourself") if source_id == target_id
+    errors.add(:base, "You can't leave a review for yourself") if source_id == target_id
   end
 
   def feedback_textifier
