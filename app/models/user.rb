@@ -1,16 +1,19 @@
 class User < ActiveRecord::Base
   include PgSearch
   multisearchable :against => [:first_name, :last_name, :city, :bio, :looking_for]
+  scope :all_except, ->(user) { where.not(id: user) }
 
   has_many :target_references, class_name: "Reference", foreign_key: :target_id
   has_many :source_references, class_name: "Reference", foreign_key: :source_id
 
   has_many :invitations
   has_many :invitations_received, class_name: "Invitation", foreign_key: :recipient_id
+  has_many :invitations_sent, class_name: "Invitation", foreign_key: :user_id
 
   has_attached_file :avatar, :styles => {
                     :medium => "300x300>",
-                    :thumb => "100x100>" }, :default_url => "/images/:attachment/missing_:style.png"
+                    :thumb => "100x100>",
+                    :mini => "30x30" }, :default_url => "/images/:attachment/missing_:style.png"
 
   before_validation { :smart_add_url_protocol }
   before_validation { self.postal_code = postal_code.upcase }

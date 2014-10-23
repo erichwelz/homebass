@@ -3,19 +3,16 @@ class UsersController < ApplicationController
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:sort] == "near"
-      users = current_user.nearbys
-    else
-      users = (current_user.blank? ? User.all : User.find(:all, :conditions => ["id != ?", current_user.id]))
-    end
+      #select option doesn't appear unless current_user
+    return @users = current_user.nearbys if params[:sort] == "near"
 
-    if params[:tag]
-      @users = User.tagged_with(params[:tag])
-    elsif params[:query] && PgSearch.multisearch(params[:query]).length >= 1
+    return @users = User.tagged_with(params[:tag]) if params[:tag]
+
+    if params[:query] && PgSearch.multisearch(params[:query]).length >= 1
       search = PgSearch.multisearch(params[:query])
       @users = search.map(&:searchable)
     else
-      @users = users
+      @users = current_user.present? ? User.all_except(current_user) : User.all
     end
 
       respond_to do |format|

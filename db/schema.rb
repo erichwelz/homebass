@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602140430) do
+ActiveRecord::Schema.define(version: 20141023144616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 20140602140430) do
     t.datetime "updated_at"
     t.integer  "recipient_id"
     t.integer  "user_id"
-    t.boolean  "read",         default: false
+    t.boolean  "recipient_read", default: false
+    t.boolean  "sender_read",    default: true
   end
 
   create_table "pg_search_documents", force: true do |t|
