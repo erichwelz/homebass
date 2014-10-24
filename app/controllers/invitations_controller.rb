@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   before_filter :load_user, except: [:read]
+  before_filter :correct_user, only: [:index, :show]
 
   def index
 	  @invitations = Invitation.all
@@ -50,6 +51,10 @@ class InvitationsController < ApplicationController
     params.require(:invitation).permit(:content, :recipient_id, :user_id)
   end
 
+  def correct_user
+    redirect_to root_url unless current_user == @user
+  end
+
   def load_user
     @user = User.find(params[:user_id])
   end
@@ -57,4 +62,5 @@ class InvitationsController < ApplicationController
   def load_recipient
     @recipient = User.find(params[:recipient_id])
   end
+
 end
