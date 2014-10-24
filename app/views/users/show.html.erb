@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="large-9 columns medium-9 columns">
-    <h2><%= @user.full_name %></h2>   
+  <div class="small-12 medium-9 columns">
+    <h2><%= @user.full_name %></h2>
     <p>
       <%= image_tag @user.avatar.url(:medium) %><br>
       <span class="user-attr">City: </span><%= @user.city %><br>
@@ -12,7 +12,7 @@
     </p>
     <hr />
   </div>
-  <div class="large-3 columns medium-9 columns">
+  <div class="small-6 medium-3 columns">
     <a href="#ref"><h4>Feedback Rating</h4></a>
     <div id="feedback-rating">
       <%= render "feedback_rating" %>
@@ -21,13 +21,13 @@
 </div>
 
 <div class="row">
-  <ul class="large-block-grid-2 medium-block-grid-1 small-block-grid-1">  
+  <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2">
     <li id="new-message">
       <%= render "new_message" %>
     </li>
-    <li id="new-reference">  
+    <li id="new-reference">
       <%= render "new_reference" %>
-    </li> 
+    </li>
   </ul>
 </div>
 
@@ -38,7 +38,7 @@
     <h4>Be the first to leave a reference for <%= @user.first_name.capitalize %>!</h4>
   <% end %>
 <hr/>
-  <ul class="large-block-grid-3 medium-block-grid-2 small-block-grid-1" id="references">
+    <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3" id="references">
     <%= render "references" %>
   </ul>
 </div>
