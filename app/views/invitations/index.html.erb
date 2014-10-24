@@ -11,7 +11,6 @@
           <th width="60">Reply</th>
         </tr>
       </thead>
-        <% if current_user.id == @user.id %>
           <% @user.invitations_received.each do |invite| %>
         <tbody>
           <tr class="<%= 'unread_mail' unless invite.recipient_read %>">
@@ -28,22 +27,19 @@
             <td><%= link_to "Reply", "invitations/#{invite.id}"  %></td>
           </tr>
         </tbody>
-        <% end %>
       <% end %>
     </table>
 
-        <h2>Outbox</h2>
+        <h2>Sent</h2>
     <table>
       <thead>
         <tr>
           <th width="100">To</th>
           <th width="500">Message</th>
           <th width="150">Sent</th>
-          <th width="110">Mark as Read</th>
-          <th width="60">Reply</th>
+          <th width="170">Mark as Read</th>
         </tr>
       </thead>
-        <% if current_user.id == @user.id %>
         <% @user.invitations_sent.each do |invite| %>
       <tbody>
         <tr class="<%= 'unread_mail' unless invite.sender_read %>">
@@ -57,11 +53,9 @@
               <%= link_to "Mark as Read", "invitations/#{invite.id}/read" %>
             <% end %>
           </td>
-          <td><%= link_to "Reply", "invitations/#{invite.id}" %></td>
         </tr>
       </tbody>
-      <% end %>
-      <% end %>
+    <% end %>
     </table>
   </div>
 </div>
