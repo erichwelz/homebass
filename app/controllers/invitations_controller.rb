@@ -1,15 +1,15 @@
 class InvitationsController < ApplicationController
   before_filter :load_user, except: [:read, :show]
 
-  before_filter :correct_user, only: [:index, :show]
-
   def index
+    redirect_to root_url unless current_user == @user
     @invitations = Invitation.all
   end
 
   def show
 	  @invitation = Invitation.find(params[:id])
 	  @user = User.find(@invitation.recipient_id)
+    redirect_to root_url unless current_user == @user
     @reply = Invitation.new
   end
 
@@ -54,7 +54,7 @@ class InvitationsController < ApplicationController
   end
 
   def correct_user
-    redirect_to root_url unless current_user == @user
+
   end
 
   def load_user
