@@ -19,12 +19,12 @@
             <td><%= invite.created_at.to_formatted_s(:long) %></td>
             <td>
             <% if invite.recipient_read %>
-              <%= link_to "Mark as Unread", "invitations/#{invite.id}/read" %>
+              <%= link_to "Mark as Unread", toggle_read_invitation_path(invite), method: :patch %>
             <% else %>
-              <%= link_to "Mark as Read", "invitations/#{invite.id}/read" %>
+              <%= link_to "Mark as Read", toggle_read_invitation_path(invite), method: :patch %>
             <% end %>
             </td>
-            <td><%= link_to "Reply", "invitations/#{invite.id}"  %></td>
+            <td><%= link_to "Reply", invitation_path(invite)  %></td>
           </tr>
         </tbody>
       <% end %>
@@ -48,9 +48,9 @@
           <td><%= invite.created_at.to_formatted_s(:long) %></td>
            <td>
             <% if invite.sender_read %>
-              <%= link_to "Mark as Unread", "invitations/#{invite.id}/read" %>
+              <%= link_to "Mark as Unread", toggle_read_invitation_path(invite), method: :patch  %>
             <% else %>
-              <%= link_to "Mark as Read", "invitations/#{invite.id}/read" %>
+              <%= link_to "Mark as Read", toggle_read_invitation_path(invite), method: :patch %>
             <% end %>
           </td>
         </tr>
