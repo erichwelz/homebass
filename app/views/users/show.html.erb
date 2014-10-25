@@ -1,13 +1,30 @@
 <div class="row">
   <div class="small-9 columns">
-    <h2><%= @user.full_name %></h2>
-      <%= image_tag @user.avatar.url(:medium) %><br>
-      <span class="user-attr">City: </span><%= @user.city %><br>
-      <span class="user-attr">Instruments: </span><%= @user.instrument_list %><br>
-      <span class="user-attr">Prefered Genres: </span><%= @user.genre_list %><br><br>
-      <span class="user-attr">Biography: </span><%= @user.bio %><br><br>
-      <span class="user-attr">Looking For: </span><%= @user.looking_for %><br><br>
-      <a href=<%="#{@user.personal_url}"%>>My Website</a>
+      <div id="musician-show-bio">
+        <div id="musician-name-img">
+          <div class="user-name">
+        </div>
+          <h2><%= @user.full_name %></h2>
+            <div id="musician-show-img">
+              <%= image_tag @user.avatar.url(:medium) %>
+            </div>
+            <hr />
+        </div>
+
+        <span class="show-attr">City:</span> <%= @user.city %><br>
+        <span class="show-attr">Genres:</span>
+          <%= @user.genre_list %><br>
+        <span class="show-attr">Instruments:</span>
+          <%= @user.instrument_list %><br>
+        <% if current_user != @user %>
+          <%= @user.distance_to(current_user, :km).round(1) %> KM from you
+        <% end %><br>
+        <span class="show-attr">Biography:</span>
+          <%= @user.bio %><br><br>
+        <span class="show-attr">Looking for:</span>
+          <%= @user.looking_for %><br><br>
+          <a href=<%="#{@user.personal_url}"%>>My Website</a>
+    </div>
   </div>
 
   <div class="small-2 end medium-3 columns">
