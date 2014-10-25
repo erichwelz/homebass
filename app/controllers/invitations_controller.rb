@@ -1,14 +1,16 @@
 class InvitationsController < ApplicationController
-  before_filter :load_user, except: [:read]
-  before_filter :correct_user, only: [:index, :show]
+  before_filter :load_user, except: [:read, :show]
 
   def index
-	  @invitations = Invitation.all
+    redirect_to root_url unless current_user == @user
+    @invitations = Invitation.all
   end
 
   def show
 	  @invitation = Invitation.find(params[:id])
-	  @reply = Invitation.new
+	  @user = User.find(@invitation.recipient_id)
+    redirect_to root_url unless current_user == @user
+    @reply = Invitation.new
   end
 
   def new
@@ -17,7 +19,7 @@ class InvitationsController < ApplicationController
 
   def read
 	  @user = current_user
-	  @invitation = Invitation.find(params[:invitation_id])
+	  @invitation = Invitation.find(params[:id])
 
     if current_user.id == @invitation.recipient_id
 	   @invitation.toggle!(:recipient_read)
@@ -52,15 +54,10 @@ class InvitationsController < ApplicationController
   end
 
   def correct_user
-    redirect_to root_url unless current_user == @user
+
   end
 
   def load_user
     @user = User.find(params[:user_id])
   end
-
-  def load_recipient
-    @recipient = User.find(params[:recipient_id])
-  end
-
 end
