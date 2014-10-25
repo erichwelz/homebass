@@ -11,14 +11,15 @@
             <hr />
         </div>
 
-        <span class="show-attr">City:</span> <%= @user.city %><br>
+        <span class="show-attr">City:</span> <%= @user.city %>
+         <% if current_user != @user %>
+          - <%= @user.distance_to(current_user, :km).round(1) %> KM from you
+        <% end %><br>
         <span class="show-attr">Genres:</span>
           <%= @user.genre_list %><br>
         <span class="show-attr">Instruments:</span>
           <%= @user.instrument_list %><br>
-        <% if current_user != @user %>
-          <%= @user.distance_to(current_user, :km).round(1) %> KM from you
-        <% end %><br>
+
         <span class="show-attr">Biography:</span>
           <%= @user.bio %><br><br>
         <span class="show-attr">Looking for:</span>
