@@ -36,6 +36,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'sunspot_solr'
+  gem 'letter_opener'
 end
 
 group :development, :test do
