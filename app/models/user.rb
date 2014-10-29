@@ -17,8 +17,7 @@ class User < ActiveRecord::Base
 
   before_validation { self.postal_code = postal_code.upcase }
 
-
-  before_save { (self.personal_url = "http://#{self.personal_url}" unless self.personal_url[/\Ahttps?:\/\//]) if self.personal_url.present? }
+  before_save { self.smart_add_url }
   before_save { self.email = email.downcase }
 
   validates_length_of :password, minimum: 6, on: :create
@@ -49,6 +48,12 @@ class User < ActiveRecord::Base
   def full_name
     if first_name.present? && last_name.present?
       full_name = (first_name.capitalize + " " + last_name.capitalize)
+    end
+  end
+
+  def smart_add_url
+    if self.personal_url.present?
+      self.personal_url = "http://#{self.personal_url}" unless self.personal_url[/\Ahttps?:\/\//]
     end
   end
 end
