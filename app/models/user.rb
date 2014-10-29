@@ -15,14 +15,15 @@ class User < ActiveRecord::Base
                     :thumb => "100x100>",
                     :mini => "30x30" }, :default_url => "/images/:attachment/missing_:style.png"
 
-  before_validation { :smart_add_url_protocol }
   before_validation { self.postal_code = postal_code.upcase }
 
+
+  before_save { (self.personal_url = "http://#{self.personal_url}" unless self.personal_url[/\Ahttps?:\/\//]) if self.personal_url.present? }
   before_save { self.email = email.downcase }
 
+  validates_length_of :password, minimum: 6, on: :create
   validates_confirmation_of :password
 
-  validates_length_of :password, :minimum => 6, :allow_blank => false, on: [:create, :update]
   validates_length_of :first_name, :maximum => 35
   validates_length_of :last_name, :maximum => 35
 
@@ -48,12 +49,6 @@ class User < ActiveRecord::Base
   def full_name
     if first_name.present? && last_name.present?
       full_name = (first_name.capitalize + " " + last_name.capitalize)
-    end
-  end
-
-  def smart_add_url_protocol
-    if personal_url.present?
-      personal_url = "http://#{personal_url}" unless personal_url[/\Ahttps?:\/\//]
     end
   end
 end
