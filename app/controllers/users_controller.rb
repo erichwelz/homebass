@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @recipient = User.find(params[:id])
       if current_user
         @reference = @user.target_references.build
