@@ -48,6 +48,7 @@ end
 
 group :test do
   gem 'selenium-webdriver'
+  gem "capybara-webkit"
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false

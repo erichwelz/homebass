@@ -25,7 +25,15 @@ describe "User pages" do
     it { should have_content('Leave a Reference') }
   end
 
-  describe "signup" do
+  describe "reset password" do
+    let(:user) { FactoryGirl.create(:user, password: 'foobar') }
+    before(:each) do
+      visit login_path
+      within('#pwd_reset') { fill_in "Email", with: user.email }
+      click_button "Reset my password"
+    end
+    it { should have_content('Instructions have been sent to your email') }
+  end
 
     # before { visit join_path }
 
@@ -42,7 +50,7 @@ describe "User pages" do
     #   it { should have_content('errors')}
     # end
 
-    describe "with valid information", focus: true do
+    describe "with valid information" do
       # describe "after saving the user" do
       #   before { click_button 'Save' }
       #   let (:user) {User.find_by(email: 'user@example.com' )}
@@ -57,17 +65,14 @@ describe "User pages" do
       # end
 
         it "should create a user" do
-          #click_button 'Save'
-            visit join_path
+        visit join_path
         fill_in "First Name",         with: "Albert"
         fill_in "Last Name",         with: "Einstein"
         fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
         fill_in "Confirm Password", with: "foobar"
         fill_in "Postal Code",  with: "M4K 2L7"
-        #expect { click_button 'Save' }.to change(User, :count).by(1)
-        click_button('Save')
+        expect { click_button 'Save' }.to change(User, :count).by(1)
       end
     end
   end
-end
