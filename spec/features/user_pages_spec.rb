@@ -25,6 +25,16 @@ describe "User pages" do
     it { should have_content('Leave a Reference') }
   end
 
+  describe "reset password" do
+    let(:user) { FactoryGirl.create(:user, password: 'foobar') }
+    before do
+      visit login_path
+      within('#pwd_reset') { fill_in "Email", with: user.email }
+      click_button "Reset my password"
+    end
+    it { should have_content('Instructions have been sent to your email') }
+  end
+
   describe "signup" do
 
     before { visit join_path }
@@ -42,7 +52,15 @@ describe "User pages" do
       it { should have_content('errors')}
     end
 
-      describe "with valid information" do
+    describe "clicking the save button on registration" do
+      before do
+        visit join_path
+        click_button "Save"
+      end
+      it { should have_content('errors') }
+    end
+
+    describe "with valid information" do
       before do
         fill_in "First Name",         with: "Albert"
         fill_in "Last Name",         with: "Einstein"
@@ -52,21 +70,22 @@ describe "User pages" do
         fill_in "Postal Code",  with: "M4K 2L7"
       end
 
-      # describe "after saving the user" do
-      #   before { click_button 'Save' }
-      #   let (:user) {User.find_by(email: 'user@example.com' )}
+      describe "after saving the user" do
+        before { click_button 'Save' }
+        let (:user) {User.find_by(email: 'user@example.com' )}
 
-      #   it { should have_link('Logout') }
-      #   it { should have_content('Welcome to Homebass.') }
+        it { should have_link('Logout') }
+        it { should have_content('Welcome to Homebass.') }
 
-      #   describe "followed by signout" do
-      #     before { click_link 'Logout' }
-      #     it { should have_link('Login') }
-      #   end
-      # end
+        describe "followed by signout" do
+          before { click_link 'Logout', match: :first }
 
-        it "should create a user" do
 
+        it { should have_link('Login') }
+        end
+      end
+
+      it "should create a user" do
         expect { click_button 'Save' }.to change(User, :count).by(1)
       end
     end
