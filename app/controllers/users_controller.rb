@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :debug
 
   def index
       #select option doesn't appear unless current_user
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = User.new()
   end
 
   def edit
@@ -40,8 +41,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+puts @user.inspect
+puts '--------------------------------'
+
     respond_to do |format|
       if @user.save
+puts 'saaaaved'
         auto_login(@user)
         #Send a welcome email
         UserMailer.welcome_email(@user).deliver
@@ -49,6 +54,7 @@ class UsersController < ApplicationController
         format.html { redirect_to(:users, notice: 'Welcome to Homebass.') }
         format.json { render action: 'show', status: :created, location: @user }
       else
+puts 'not saaaved'
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -97,5 +103,9 @@ class UsersController < ApplicationController
                                  :looking_for,
                                  :personal_url,
                                  :avatar)
+  end
+
+  def debug
+    puts params.inspect
   end
 end
