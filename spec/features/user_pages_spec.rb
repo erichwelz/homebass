@@ -27,13 +27,15 @@ describe "User pages" do
 
   describe "reset password" do
     let(:user) { FactoryGirl.create(:user, password: 'foobar') }
-    before(:each) do
+    before do
       visit login_path
       within('#pwd_reset') { fill_in "Email", with: user.email }
       click_button "Reset my password"
     end
     it { should have_content('Instructions have been sent to your email') }
   end
+
+  describe "signup" do
 
     before { visit join_path }
 
@@ -51,7 +53,7 @@ describe "User pages" do
     end
 
     describe "clicking the save button on registration" do
-      before(:each) do
+      before do
         visit join_path
         click_button "Save"
       end
@@ -59,6 +61,15 @@ describe "User pages" do
     end
 
     describe "with valid information" do
+      before do
+        fill_in "First Name",         with: "Albert"
+        fill_in "Last Name",         with: "Einstein"
+        fill_in "Email",        with: "user@example.com"
+        fill_in "Password",     with: "foobar"
+        fill_in "Confirm Password", with: "foobar"
+        fill_in "Postal Code",  with: "M4K 2L7"
+      end
+
       describe "after saving the user" do
         before { click_button 'Save' }
         let (:user) {User.find_by(email: 'user@example.com' )}
@@ -73,14 +84,8 @@ describe "User pages" do
       end
 
       it "should create a user" do
-        visit join_path
-        fill_in "First Name",         with: "Albert"
-        fill_in "Last Name",         with: "Einstein"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirm Password", with: "foobar"
-        fill_in "Postal Code",  with: "M4K 2L7"
         expect { click_button 'Save' }.to change(User, :count).by(1)
       end
     end
   end
+end
