@@ -56,12 +56,12 @@ describe "User pages" do
         before { click_button 'Save' }
         let (:user) {User.find_by(email: 'user@example.com' )}
 
-        it { should have_link('Sign out') }
+        it { should have_link('Logout') }
         it { should have_content('Welcome to Homebass.') }
 
         describe "followed by signout" do
-          before { click_link 'Sign out' }
-          it { should have_link('Sign in') }
+          before { click_link 'Logout' }
+          it { should have_link('Login') }
         end
       end
 
