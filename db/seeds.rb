@@ -43,23 +43,23 @@ user2 = User.create!({
   }
 )
 
-# 38.times do |i|
-#   User.create!({
-#   email: "person#{i}@gmail.com",
-#   first_name: "generic",
-#   last_name: "person##{i}",
-#   city: "Toronto",
-#   postal_code: postal_arr.sample,
-#   password: "password",
-#   password_confirmation: "password",
-#   bio: Faker::Lorem.sentence(word_count = 20),
-#   genre_list: genre_arr.sample(rand(1..3)),
-#   instrument_list: instrument_arr.sample(rand(1..3)),
-#   looking_for: Faker::Lorem.sentence(word_count = 20),
-#   personal_url: "http://homebass.ca"
-#   }
-# )
-# end
+38.times do |i|
+  User.create!({
+  email: "person#{i}@gmail.com",
+  first_name: "generic",
+  last_name: "person##{i}",
+  city: "Toronto",
+  postal_code: postal_arr.sample,
+  password: "password",
+  password_confirmation: "password",
+  bio: Faker::Lorem.sentence(word_count = 20),
+  genre_list: genre_arr.sample(rand(1..3)),
+  instrument_list: instrument_arr.sample(rand(1..3)),
+  looking_for: Faker::Lorem.sentence(word_count = 20),
+  personal_url: "http://homebass.ca"
+  }
+)
+end
 
 msg1 = user1.invitations.build(content: "Welcome to homebass, signed the admin", user_id: user1.id, recipient_id: user2.id)
 msg1.save
