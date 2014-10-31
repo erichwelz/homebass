@@ -52,21 +52,21 @@ describe "User pages" do
         fill_in "Postal Code",  with: "M4K 2L7"
       end
 
-      describe "after saving the user" do
-        before { click_button 'Save' }
-        let (:user) {User.find_by(email: 'user@example.com' )}
+      # describe "after saving the user" do
+      #   before { click_button 'Save' }
+      #   let (:user) {User.find_by(email: 'user@example.com' )}
 
-        it { should have_link('Logout') }
-        it { should have_content('Welcome to Homebass.') }
+      #   it { should have_link('Logout') }
+      #   it { should have_content('Welcome to Homebass.') }
 
-        describe "followed by signout" do
-          before { click_link 'Logout' }
-          it { should have_link('Login') }
-        end
-      end
+      #   describe "followed by signout" do
+      #     before { click_link 'Logout' }
+      #     it { should have_link('Login') }
+      #   end
+      # end
 
         it "should create a user" do
-          binding.pry
+
         expect { click_button 'Save' }.to change(User, :count).by(1)
       end
     end
