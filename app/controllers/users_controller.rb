@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :debug
+  #before_filter :debug
 
   def index
       #select option doesn't appear unless current_user

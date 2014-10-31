@@ -60,7 +60,7 @@ describe "User pages" do
       it { should have_content('errors') }
     end
 
-    describe "with valid information", focus: true do
+    describe "with valid information" do
       before do
         fill_in "First Name",         with: "Albert"
         fill_in "Last Name",         with: "Einstein"
