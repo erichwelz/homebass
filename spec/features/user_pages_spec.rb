@@ -36,10 +36,39 @@ describe "User pages" do
     end
 
     describe "after submission" do
-       before { click_button 'Save' }
+      before { click_button 'Save' }
 
       it { should have_content('We will never sell')}
       it { should have_content('errors')}
+    end
+
+      describe "with valid information" do
+      before do
+        fill_in "First Name",         with: "Albert"
+        fill_in "Last Name",         with: "Einstein"
+        fill_in "Email",        with: "user@example.com"
+        fill_in "Password",     with: "foobar"
+        fill_in "Confirm Password", with: "foobar"
+        fill_in "Postal Code",  with: "M4K 2L7"
+      end
+
+      describe "after saving the user" do
+        before { click_button 'Save' }
+        let (:user) {User.find_by(email: 'user@example.com' )}
+
+        it { should have_link('Sign out') }
+        it { should have_content('Welcome to Homebass.') }
+
+        describe "followed by signout" do
+          before { click_link 'Sign out' }
+          it { should have_link('Sign in') }
+        end
+      end
+
+        it "should create a user" do
+          binding.pry
+        expect { click_button 'Save' }.to change(User, :count).by(1)
+      end
     end
   end
 end

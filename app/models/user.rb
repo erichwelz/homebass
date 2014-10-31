@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :postal_code
 
-  validates_presence_of :genre_list
-  validates_presence_of :instrument_list
+  #validates_presence_of :genre_list
+  #validates_presence_of :instrument_list
 
   validates_format_of :first_name, :with => /[a-z]/
   validates_format_of :last_name, :with => /[a-z]/
