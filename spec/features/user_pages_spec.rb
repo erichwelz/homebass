@@ -35,36 +35,44 @@ describe "User pages" do
     it { should have_content('Instructions have been sent to your email') }
   end
 
-    # before { visit join_path }
+    before { visit join_path }
 
-    # describe "with invalid information" do
-    #   it "should not create a user" do
-    #     expect { click_button 'Save' }.not_to change(User, :count)
-    #   end
-    # end
+    describe "with invalid information" do
+      it "should not create a user" do
+        expect { click_button 'Save' }.not_to change(User, :count)
+      end
+    end
 
-    # describe "after submission" do
-    #   before { click_button 'Save' }
+    describe "after submission" do
+      before { click_button 'Save' }
 
-    #   it { should have_content('We will never sell')}
-    #   it { should have_content('errors')}
-    # end
+      it { should have_content('We will never sell')}
+      it { should have_content('errors')}
+    end
+
+    describe "clicking the save button on registration" do
+      before(:each) do
+        visit join_path
+        click_button "Save"
+      end
+      it { should have_content('errors') }
+    end
 
     describe "with valid information" do
-      # describe "after saving the user" do
-      #   before { click_button 'Save' }
-      #   let (:user) {User.find_by(email: 'user@example.com' )}
+      describe "after saving the user" do
+        before { click_button 'Save' }
+        let (:user) {User.find_by(email: 'user@example.com' )}
 
-      #   it { should have_link('Logout') }
-      #   it { should have_content('Welcome to Homebass.') }
+        it { should have_link('Logout') }
+        it { should have_content('Welcome to Homebass.') }
 
-      #   describe "followed by signout" do
-      #     before { click_link 'Logout' }
-      #     it { should have_link('Login') }
-      #   end
-      # end
+        describe "followed by signout" do
+          before { click_link 'Logout' }
+          it { should have_link('Login') }
+        end
+      end
 
-        it "should create a user" do
+      it "should create a user" do
         visit join_path
         fill_in "First Name",         with: "Albert"
         fill_in "Last Name",         with: "Einstein"
