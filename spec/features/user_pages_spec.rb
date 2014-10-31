@@ -60,7 +60,7 @@ describe "User pages" do
       it { should have_content('errors') }
     end
 
-    describe "with valid information" do
+    describe "with valid information", focus: true do
       before do
         fill_in "First Name",         with: "Albert"
         fill_in "Last Name",         with: "Einstein"
@@ -78,8 +78,10 @@ describe "User pages" do
         it { should have_content('Welcome to Homebass.') }
 
         describe "followed by signout" do
-          before { click_link 'Logout' }
-          it { should have_link('Login') }
+          before { click_link 'Logout', match: :first }
+
+
+        it { should have_link('Login') }
         end
       end
 
