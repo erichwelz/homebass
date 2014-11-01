@@ -1,6 +1,6 @@
 <%= form_for([@user, @invitation], remote: true ) do |f| %>
   <div id="message-form-errors" >
-    <%= render :partial => "/users/message_form_errors" %>
+    <%= render 'shared/error_messages', object: f.object %>
   </div>
 
   <%= f.hidden_field :recipient_id %>
