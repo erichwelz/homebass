@@ -4,7 +4,7 @@
 
   <%= form_for([@user, @reference], remote: true ) do |f| %>
     <div id="reference-form-errors" >
-      <%= render 'shared/error_messages', object: f.object %>
+      <%= render 'shared/reference_form_errors' %>
     </div>
 
     <%= f.text_area :comment %>
