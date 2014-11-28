@@ -1,21 +1,20 @@
-MusicianFinder/Homebass
+## MusicianFinder/Homebass
 
 Bitmaker Labs Final Project - Deployed on Heroku using Amazon S3 for assets: homebass.ca
 
-Contributors
+### Contributors
 
 David Merritt - davidmerrit6@gmail.com
-
 Erich Welz - erich@welz.ca
 
-FUNCTIONALITY
+### Functionality
 
 This project allows you to find and message musicians near you for collaboration
 
 Users can leave other users references. 
 
-Feature PostGres, Geolocation, RegExp Validations
+Featuring PostGres, Geolocation, RegExp Validations
 
 Styling with Foundation
 
-Ruby 2.00 / Rails 4.00!
+Ruby 2.12, Rails 4.16
