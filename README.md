@@ -1,13 +1,13 @@
-MusicianFinder/Homebass
+## MusicianFinder/Homebass
 
 Bitmaker Labs Final Project - Deployed on Heroku using Amazon S3 for assets: homebass.ca
 
-Contributors
+### Contributors
 
 David Merritt - davidmerrit6@gmail.com
 Erich Welz - erich@welz.ca
 
-Functionality
+### Functionality
 
 This project allows you to find and message musicians near you for collaboration
 
